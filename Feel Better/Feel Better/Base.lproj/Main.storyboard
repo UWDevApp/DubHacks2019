@@ -45,7 +45,7 @@
         <!--Memories-->
         <scene sceneID="XQp-vJ-zH7">
             <objects>
-                <tableViewController title="Memories" id="q5f-qt-03P" sceneMemberID="viewController">
+                <tableViewController title="Memories" id="q5f-qt-03P" customClass="MemoriesTableViewController" customModule="Feel_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fcn-bR-lMn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,6 +68,10 @@
                     <navigationItem key="navigationItem" title="Memories" id="cPP-e8-DB5">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="C00-xb-ljt"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="Add_Memory_Button" destination="C00-xb-ljt" id="CCg-Ad-cpI"/>
+                        <outlet property="Memories_TableView" destination="Fcn-bR-lMn" id="GPR-SX-jEo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KR2-Xm-R8G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

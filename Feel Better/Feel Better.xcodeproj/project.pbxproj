@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A023528B560065ECD1 /* Memories Class.swift */; };
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0482352746F00C8BE8D /* FirstViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0AF33A023528B560065ECD1 /* Memories Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memories Class.swift"; sourceTree = "<group>"; };
 		D20CB0412352746F00C8BE8D /* Feel Better.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feel Better.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20CB0442352746F00C8BE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20CB0462352746F00C8BE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				D20CB0442352746F00C8BE8D /* AppDelegate.swift */,
 				D20CB0462352746F00C8BE8D /* SceneDelegate.swift */,
+				A0AF33A023528B560065ECD1 /* Memories Class.swift */,
 				D20CB0482352746F00C8BE8D /* FirstViewController.swift */,
 				D20CB04A2352746F00C8BE8D /* MemoriesTableViewViewController.swift */,
 				D20CB04C2352746F00C8BE8D /* Main.storyboard */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D20CB04B2352746F00C8BE8D /* MemoriesTableViewViewController.swift in Sources */,
+				A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */,
 				D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */,
 				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,
 				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,

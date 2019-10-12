@@ -343,3 +343,7 @@
 	};
 	rootObject = D20CB0392352746F00C8BE8D /* Project object */;
 }
+
+# add the Firebase pod for Google Analytics
+pod 'Firebase/Analytics'
+https://firebase.google.com/docs/ios/setup#available-pods

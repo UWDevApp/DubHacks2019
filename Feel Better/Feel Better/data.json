@@ -1,0 +1,13 @@
+/*add data to firebase*/
+
+let messagesDB = Database.database().reference().child("Messages")
+
+    let messageDictionary : NSDictionary = ["Sender" : Auth.auth().currentUser!.email as String!, "MessageBody" : messageTextfield.text!]
+        messagesDB.childByAutoId().setValue(messageDictionary) {
+            (error, ref) in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                print("Message saved successfully!")
+            } 

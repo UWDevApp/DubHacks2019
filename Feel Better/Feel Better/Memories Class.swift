@@ -13,18 +13,20 @@ class Memory {
 	var title: String
 	var content: String
 	var sentiment: Int
+	var sentiment_emoji: String
 	var saved_date: Date
 	var image: UIImage?
 	
-	init? (title: String, content: String, sentiment: String, saved_date: Date, image: UIImage?)
-	
-	self.title = title
-	self.content = content
-	self.sentiment = sentiment
-	self.saved_date = saved_date
-	self.image = image
-	
-	guard !title.isEmpty else {
-		return nil
+	init?(title: String, content: String, sentiment: Int, sentiment_emoji: String, saved_date: Date, image: UIImage?) {
+		self.title = title
+		self.content = content
+		self.sentiment = sentiment
+		self.sentiment_emoji = sentiment_emoji
+		self.saved_date = saved_date
+		self.image = image
 	}
+	
+//	guard !title.isEmpty else {
+//		return nil
+//	}
 }

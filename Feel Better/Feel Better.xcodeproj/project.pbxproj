@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A023528B560065ECD1 /* Memories Class.swift */; };
+		A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */; };
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0482352746F00C8BE8D /* FirstViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		A0AF33A023528B560065ECD1 /* Memories Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memories Class.swift"; sourceTree = "<group>"; };
+		A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		D20CB0412352746F00C8BE8D /* Feel Better.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feel Better.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20CB0442352746F00C8BE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20CB0462352746F00C8BE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				A0AF33A023528B560065ECD1 /* Memories Class.swift */,
 				D20CB0482352746F00C8BE8D /* FirstViewController.swift */,
 				D20CB04A2352746F00C8BE8D /* MemoriesTableViewViewController.swift */,
+				A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */,
 				D20CB04C2352746F00C8BE8D /* Main.storyboard */,
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
 				D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 				A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */,
 				D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */,
 				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,
+				A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */,
 				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

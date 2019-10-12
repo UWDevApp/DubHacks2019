@@ -13,7 +13,7 @@ class Memory {
 	var title: String
 	var content: String
 	var sentiment: Int
-	var sentiment_emoji: String
+	var sentiment_emoji: String // 😄, 🙂, 😐, ☹️, 😭
 	var saved_date: Date
 	var image: UIImage?
 	

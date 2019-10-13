@@ -31,10 +31,18 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	@IBOutlet weak var saveMemoryBarButton: UIBarButtonItem!
 	@IBAction func bringUpSavePopUpView(_ sender: UIBarButtonItem) {
 		// Azure sentiment API and returning sentiments and displaying accordingly
-		TextAnalzyer.analyzeSentiment(of: newMemoryContent.text) {
-		 (result) in
-		 self.newMemorySentiment = try! result.get().score
+		let sentimentsDispatchGroup = DispatchGroup()
+		sentimentsDispatchGroup.enter()
+		
+		DispatchQueue.global(qos: .default).async {
+			TextAnalzyer.analyzeSentiment(of: self.newMemoryContent.text) {
+			 (result) in
+				self.newMemorySentiment = try! result.get().score
+				sentimentsDispatchGroup.leave()
+			 }
 		 }
+		 sentimentsDispatchGroup.wait()
+		 
 		 switch newMemorySentiment {
 			case 0..<20:
 				newMemoryOverride0To20.titleLabel?.font = .systemFont(ofSize: 65)
@@ -81,7 +89,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	var alert = UIAlertController()
 	
 	var memoryToSave: Memory?
-	var newMemorySentiment: Int = 0
+	var newMemorySentiment: Int = -5
 	
 	//MARK: UIImagePicker
 	let UIImagePicker = UIImagePickerController()

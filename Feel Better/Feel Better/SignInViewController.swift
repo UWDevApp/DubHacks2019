@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class SignInViewController: UIViewController {
 
@@ -22,6 +24,7 @@ class SignInViewController: UIViewController {
     var hasAccount = false
     
     // MARK: Methods
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +68,23 @@ class SignInViewController: UIViewController {
         
         if hasAccount{
             
+            if !nameField.text!.isEmpty && !emailField.text!.isEmpty{
+                Auth.auth().signIn(withEmail: nameField.text!, password: emailField.text!) { [weak self] user, error in
+                  guard let strongSelf = self else { return }
+                  print("error \(error)")
+                }
+            }
+            
+            
         }else{
+            if !emailField.text!.isEmpty && !passwordField.text!.isEmpty && !confirmPassword.text!.isEmpty{
+                if passwordField.text == confirmPassword.text{
+                    print("yay")
+                    Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
+                      print("error \(error)")
+                    }
+                }
+            }
             
         }
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Firebase
 
 extension Date {
     func dayNumberOfWeek() -> Int? {
@@ -29,6 +30,19 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var trends = [5,3,5,10,7,2,1]
     
     let keywordDictionary = ["Lost":5,"Hello":3,"Happy":10,"Chicken":1,"Food":8,"WOW":50]
+    
+    // MARK: Check Login
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Auth.auth().currentUser != nil {
+          print("has user")
+            print(Auth.auth().currentUser?.email)
+        } else {
+          print("doesn't have user")
+        }
+    }
     
     // MARK: viewDidLoad
     override func viewDidLoad() {

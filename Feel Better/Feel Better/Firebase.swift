@@ -30,6 +30,7 @@ public class Firebase {
     
     func deleteMemory(withID documentID: String) {
         diariesRef.document(documentID).delete()
+        deleteImage(for: documentID)
     }
     
     func replaceMemory<T>(withID documentID: String, _ property: KeyPath<LocalMemory, T>, with newValue: T) {
@@ -104,10 +105,15 @@ public class Firebase {
         }
     }
     
+    private func deleteImage(for documentID: String, then process: ((Error?) -> Void)? = nil) {
+        let picsRef = storageRef.child(documentID + ".png")
+        picsRef.delete(completion: process)
+    }
+    
     private func uploadImage(_ data: Data, for documentID: String){
         // Create a reference to the file you want to upload
-        let picsRef = storageRef.child(documentID + ".png")
-        picsRef.delete { _ in
+        deleteImage(for: documentID) { _ in
+            let picsRef = self.storageRef.child(documentID + ".png")
             // Upload the file to the path "images/rivers.jpg"
             picsRef.putData(data, metadata: nil)
         }

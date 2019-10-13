@@ -41,6 +41,14 @@ class SignInViewController: UIViewController {
         passwordField.isSecureTextEntry = true
         confirmPassword.isSecureTextEntry = true
         
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resign)))
+    }
+    
+    @objc private func resign() {
+        nameField.resignFirstResponder()
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        confirmPassword.resignFirstResponder()
     }
     
     @IBAction func selectSignIn(_ sender: Any) {
@@ -87,23 +95,23 @@ class SignInViewController: UIViewController {
             if !nameField.text!.isEmpty && !emailField.text!.isEmpty {
                 Auth.auth().signIn(withEmail: nameField.text!, password: emailField.text!)
                 { [weak self] user, error in
-                    guard self != nil else { return }
+                    guard let self = self else { return }
+                    self.dismiss(animated: true, completion: nil)
                     print("error \(error?.localizedDescription ?? "none")")
                 }
             }
-            dismiss(animated: true, completion: nil)
             //self.performSegue(withIdentifier: "unwindToHome", sender: self)
         } else {
-            if !emailField.text!.isEmpty && !passwordField.text!.isEmpty && !confirmPassword.text!.isEmpty{
+            if !emailField.text!.isEmpty && !passwordField.text!.isEmpty && !confirmPassword.text!.isEmpty {
                 if passwordField.text == confirmPassword.text{
                     print("yay")
                     Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!)
-                    { authResult, error in
+                    { [weak self] authResult, error in
+                        self?.dismiss(animated: true, completion: nil)
                         print("error \(error?.localizedDescription ?? "none")")
                     }
                 }
             }
-            dismiss(animated: true, completion: nil)
         }
     }
 }

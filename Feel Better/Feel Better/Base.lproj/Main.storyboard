@@ -200,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6dK-UP-vZc">
-                                <rect key="frame" x="158" y="126" width="98.000000000000014" height="93"/>
+                                <rect key="frame" x="158" y="126" width="98" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="0IB-rc-AdY"/>
                                     <constraint firstAttribute="height" constant="93" id="XCG-xk-wIq"/>
@@ -443,7 +443,7 @@
                                     </textView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upS-6e-o5s" userLabel="Image Suggestion Pop Up View">
                                         <rect key="frame" x="0.0" y="522" width="414" height="316"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="System Suggests These Images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-Zn-Bii">
                                                 <rect key="frame" x="8" y="8" width="398" height="21"/>
@@ -511,7 +511,7 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhk-Hn-Z1I" userLabel="Save Pop Up View">
                                 <rect key="frame" x="24" y="317" width="370" height="164"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vPf-8A-mkH">
                                         <rect key="frame" x="0.0" y="37" width="366" height="126.5"/>

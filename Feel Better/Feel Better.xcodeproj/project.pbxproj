@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,15 @@
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB04A2352746F00C8BE8D /* SecondViewController.swift */; };
+		A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A023528B560065ECD1 /* Memories Class.swift */; };
+		A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */; };
+		A0AF33A52352B2CA0065ECD1 /* MemoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */; };
+		A0AF33A72352C0110065ECD1 /* NewMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A62352C0110065ECD1 /* NewMemoryViewController.swift */; };
+		A0AF33AA2352C1C80065ECD1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = A0AF33A92352C1C80065ECD1 /* KeyboardLayoutGuide */; };
+		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
+		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
+		D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0482352746F00C8BE8D /* FirstViewController.swift */; };
+		D20CB04B2352746F00C8BE8D /* MemoriesTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB04A2352746F00C8BE8D /* MemoriesTableViewViewController.swift */; };
 		D20CB04E2352746F00C8BE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20CB04C2352746F00C8BE8D /* Main.storyboard */; };
 		D20CB0502352747000C8BE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20CB04F2352747000C8BE8D /* Assets.xcassets */; };
 		D20CB0532352747000C8BE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */; };
@@ -48,6 +57,10 @@
 /* Begin PBXFileReference section */
 		1C0E06F82352935800A916D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.debug.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.debug.xcconfig"; sourceTree = "<group>"; };
+		A0AF33A023528B560065ECD1 /* Memories Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memories Class.swift"; sourceTree = "<group>"; };
+		A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
+		A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsViewController.swift; sourceTree = "<group>"; };
+		A0AF33A62352C0110065ECD1 /* NewMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoryViewController.swift; sourceTree = "<group>"; };
 		B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feel_Better.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15896BFDF0C32AA62D5DAE5 /* Pods-Feel Better.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.release.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.release.xcconfig"; sourceTree = "<group>"; };
 		C18B323123527DE6001E4DFE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +86,8 @@
 		D20CB0442352746F00C8BE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20CB0462352746F00C8BE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D20CB04A2352746F00C8BE8D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D20CB0482352746F00C8BE8D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D20CB04A2352746F00C8BE8D /* MemoriesTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesTableViewViewController.swift; sourceTree = "<group>"; };
 		D20CB04D2352746F00C8BE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D20CB04F2352747000C8BE8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20CB0522352747000C8BE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0AF33AA2352C1C80065ECD1 /* KeyboardLayoutGuide in Frameworks */,
 				E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +201,12 @@
 				C18B328323529C31001E4DFE /* ChartView.swift */,
 				C18B32992352D7F3001E4DFE /* Word Cloud */,
 				C18B32922352D7C5001E4DFE /* Extensions */,
+				A0AF33A023528B560065ECD1 /* Memories Class.swift */,
+				D20CB0482352746F00C8BE8D /* FirstViewController.swift */,
+				D20CB04A2352746F00C8BE8D /* MemoriesTableViewViewController.swift */,
+				A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */,
+				A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */,
+				A0AF33A62352C0110065ECD1 /* NewMemoryViewController.swift */,
 				D20CB04C2352746F00C8BE8D /* Main.storyboard */,
 				C18B32A123530C13001E4DFE /* SignInViewController.swift */,
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
@@ -244,6 +266,9 @@
 			dependencies = (
 			);
 			name = "Feel Better";
+			packageProductDependencies = (
+				A0AF33A92352C1C80065ECD1 /* KeyboardLayoutGuide */,
+			);
 			productName = "Feel Better";
 			productReference = D20CB0412352746F00C8BE8D /* Feel Better.app */;
 			productType = "com.apple.product-type.application";
@@ -272,6 +297,9 @@
 				Base,
 			);
 			mainGroup = D20CB0382352746F00C8BE8D;
+			packageReferences = (
+				A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */,
+			);
 			productRefGroup = D20CB0422352746F00C8BE8D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -374,6 +402,14 @@
 				C18B329C2352D99C001E4DFE /* Canvas.swift in Sources */,
 				D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */,
 				D288FB002353169200D72B86 /* Firebase.swift in Sources */,
+				D20CB04B2352746F00C8BE8D /* MemoriesTableViewViewController.swift in Sources */,
+				A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */,
+				A0AF33A72352C0110065ECD1 /* NewMemoryViewController.swift in Sources */,
+				D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */,
+				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,
+				A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */,
+				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,
+				A0AF33A52352B2CA0065ECD1 /* MemoryDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +607,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/KeyboardLayoutGuide.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0AF33A92352C1C80065ECD1 /* KeyboardLayoutGuide */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */;
+			productName = KeyboardLayoutGuide;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D20CB0392352746F00C8BE8D /* Project object */;
 }

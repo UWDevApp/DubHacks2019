@@ -25,7 +25,6 @@ class SignInViewController: UIViewController {
     
     // MARK: Methods
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +52,6 @@ class SignInViewController: UIViewController {
         
         nameField.placeholder = "Email"
         emailField.placeholder = "Password"
-        
         emailField.isSecureTextEntry = true
         
         nameField.text = ""
@@ -79,6 +77,7 @@ class SignInViewController: UIViewController {
         
         nameField.placeholder = "First Name Last Name"
         emailField.placeholder = "Email"
+        emailField.isSecureTextEntry = false
         
         signButton.setTitle("Create Account", for: .normal)
     }

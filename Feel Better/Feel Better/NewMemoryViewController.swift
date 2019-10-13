@@ -120,6 +120,8 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		newMemorySavePopUpView.layer.masksToBounds = true;
 		
 		imageSuggestionView.isHidden = true
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {

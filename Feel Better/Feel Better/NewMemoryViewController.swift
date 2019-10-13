@@ -30,32 +30,38 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
     
 	@IBOutlet weak var saveMemoryBarButton: UIBarButtonItem!
 	@IBAction func bringUpSavePopUpView(_ sender: UIBarButtonItem) {
+        let buttons = [
+            newMemoryOverride0To20,
+            newMemoryOverride20To40,
+            newMemoryOverride40To60,
+            newMemoryOverride60To80,
+            newMemoryOverride80To100
+        ]
+        
 		// Azure sentiment API and returning sentiments and displaying accordingly
-		let sentimentsDispatchGroup = DispatchGroup()
-		sentimentsDispatchGroup.enter()
-		
-		DispatchQueue.global(qos: .default).async {
-			TextAnalzyer.analyzeSentiment(of: self.newMemoryContent.text) {
-			 (result) in
-				self.newMemorySentiment = try! result.get().score
-				sentimentsDispatchGroup.leave()
-			 }
-		 }
-		 sentimentsDispatchGroup.wait()
-		 
-		 switch newMemorySentiment {
-			case 0..<20:
-				newMemoryOverride0To20.titleLabel?.font = .systemFont(ofSize: 65)
-			case 20..<40:
-				newMemoryOverride20To40.titleLabel?.font = .systemFont(ofSize: 65)
-			case 40..<60:
-				newMemoryOverride40To60.titleLabel?.font = .systemFont(ofSize: 65)
-			case 60..<80:
-				newMemoryOverride60To80.titleLabel?.font = .systemFont(ofSize: 65)
-			case 80..<100:
-				newMemoryOverride80To100.titleLabel?.font = .systemFont(ofSize: 65)
-			default: ()
-		}
+        TextAnalzyer.analyzeSentiment(of: self.newMemoryContent.text) { (result) in
+            self.newMemorySentiment = try! result.get().score
+            
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5) {
+                    buttons.forEach { $0?.titleLabel?.font = .systemFont(ofSize: 40) }
+                    
+                    switch self.newMemorySentiment {
+                    case 0..<20:
+                        self.newMemoryOverride0To20.titleLabel?.font = .systemFont(ofSize: 65)
+                    case 20..<40:
+                        self.newMemoryOverride20To40.titleLabel?.font = .systemFont(ofSize: 65)
+                    case 40..<60:
+                        self.newMemoryOverride40To60.titleLabel?.font = .systemFont(ofSize: 65)
+                    case 60..<80:
+                        self.newMemoryOverride60To80.titleLabel?.font = .systemFont(ofSize: 65)
+                    case 80..<100:
+                        self.newMemoryOverride80To100.titleLabel?.font = .systemFont(ofSize: 65)
+                    default: ()
+                    }
+                }
+            }
+        }
 		
 		newMemorySavePopUpView.setIsHidden(false, animated: true)
 		let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -68,7 +74,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	// to dismiss SavePopUpView on tap outside the view and remove blur
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
 	{
-		if touches.first?.view?.tag == 1{
+		if touches.first?.view?.tag == 1 {
 			newMemorySavePopUpView.setIsHidden(true, animated: true)
 			super.touchesEnded(touches , with: event)
 		}
@@ -88,7 +94,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	let hapticNotification = UINotificationFeedbackGenerator()
 	var alert = UIAlertController()
 	
-	var memoryToSave: Memory?
+    var memoryToSave: LocalMemory?
 	var newMemorySentiment: Int = -5
 	
 	//MARK: UIImagePicker
@@ -156,7 +162,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
     
     //MARK: Placeholder text behaviour for newMemoryContent, auto image suggestion API calling is also done through textViewDidBeginEdiitng and textViewDidEndEditing
 	func textViewDidBeginEditing(_ textView: UITextView){
-		if textView.text == "I feel......"{
+		if textView.text == "I feel......" {
 			textView.text = ""
 		}
 	}
@@ -170,7 +176,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	}
 
 	func textViewDidEndEditing(_ textView: UITextView) {
-		if textView.text == ""{
+		if textView.text == "" {
 			textView.text = "I feel......"
 		}
 		// calls auto image suggestion
@@ -200,7 +206,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 			imageToSave = newMemoryImage.image
 		}
 		
-		memoryToSave = Memory(title: titleToSave ?? "", content: contentToSave ?? "", sentiment: sentimentToSave, saveDate: dateToSave, image: imageToSave)
+        memoryToSave = LocalMemory(title: titleToSave ?? "", content: contentToSave ?? "", sentiment: sentimentToSave, saveDate: dateToSave, image: imageToSave)
 	}
 	
 	//MARK: Result / Override PopUp

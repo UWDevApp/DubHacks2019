@@ -43,8 +43,3 @@ extension TextAnalzyer {
         }).resume()
     }
 }
-
-private enum ComputerVision {
-    private static let key = "7ea07789bb9d45ed8dd6f80faf933707"
-    private static let endpoint = "https://feel-better-computer-vision.cognitiveservices.azure.com/"
-}

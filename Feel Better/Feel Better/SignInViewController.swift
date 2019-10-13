@@ -11,7 +11,7 @@ import Firebase
 
 
 class SignInViewController: UIViewController {
-
+    
     // MARK: Properties
     
     @IBOutlet weak var nameField: UITextField!
@@ -24,7 +24,7 @@ class SignInViewController: UIViewController {
     var hasAccount = false
     
     // MARK: Methods
- 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class SignInViewController: UIViewController {
         
         passwordField.isSecureTextEntry = true
         confirmPassword.isSecureTextEntry = true
-    
+        
     }
     
     @IBAction func selectSignIn(_ sender: Any) {
@@ -81,51 +81,30 @@ class SignInViewController: UIViewController {
         emailField.placeholder = "Email"
         
         signButton.setTitle("Create Account", for: .normal)
-        
     }
     
-    
     @IBAction func sign(_ sender: Any){
-        
-        if hasAccount{
-            
-            if !nameField.text!.isEmpty && !emailField.text!.isEmpty{
-                Auth.auth().signIn(withEmail: nameField.text!, password: emailField.text!) { [weak self] user, error in
+        if hasAccount {
+            if !nameField.text!.isEmpty && !emailField.text!.isEmpty {
+                Auth.auth().signIn(withEmail: nameField.text!, password: emailField.text!)
+                { [weak self] user, error in
                     guard self != nil else { return }
-                    print("error \(error!)")
+                    print("error \(error?.localizedDescription ?? "none")")
                 }
             }
-            
             dismiss(animated: true, completion: nil)
             //self.performSegue(withIdentifier: "unwindToHome", sender: self)
-            
-            
-            
-        }else{
+        } else {
             if !emailField.text!.isEmpty && !passwordField.text!.isEmpty && !confirmPassword.text!.isEmpty{
                 if passwordField.text == confirmPassword.text{
                     print("yay")
-                    Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
-                      print("error \(error!)")
+                    Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!)
+                    { authResult, error in
+                        print("error \(error?.localizedDescription ?? "none")")
                     }
                 }
             }
             dismiss(animated: true, completion: nil)
-            
-                //self.performSegue(withIdentifier: "unwindToHome", sender: self)
-            
-            
         }
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

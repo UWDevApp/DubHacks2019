@@ -37,10 +37,10 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewWillAppear(animated)
         
         if Auth.auth().currentUser != nil {
-          print("has user")
-            print(Auth.auth().currentUser?.email)
+            print("has user")
+            print(Auth.auth().currentUser!.email)
         } else {
-          print("doesn't have user")
+            print("doesn't have user")
             self.performSegue(withIdentifier: "SignPage", sender: self)
         }
     }
@@ -61,14 +61,17 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.title = "Home"
         self.navigationController?.navigationBar.topItem?.title = "Good Morning, Kevin"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if (motion == .motionShake) {
+            do {
+                try Auth.auth().signOut()
+                self.performSegue(withIdentifier: "SignPage", sender: self)
+            } catch {
+                print("Error signing out: \(error)")
+            }
         }
-        
     }
     
     // MARK: TableView Methods

@@ -117,7 +117,7 @@
                     <navigationItem key="navigationItem" title="Memories" id="cPP-e8-DB5">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="C00-xb-ljt">
                             <connections>
-                                <segue destination="Rha-KV-Xlr" kind="presentation" identifier="AddNewMemory" id="WLf-W5-JnK"/>
+                                <segue destination="Rha-KV-Xlr" kind="show" identifier="AddNewMemory" id="WLf-W5-JnK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -134,8 +134,9 @@
         <scene sceneID="3tX-hm-vHf">
             <objects>
                 <navigationController id="Rha-KV-Xlr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ofH-GE-OKO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vnj-ee-g5x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -151,69 +152,87 @@
             <objects>
                 <viewController id="ddc-n0-wXb" customClass="NewMemoryViewController" customModule="Feel_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aVq-jV-7KX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Memory Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eT-6W-RUJ">
-                                <rect key="frame" x="72" y="76" width="270" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="I feel......" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-JJ-AYT">
-                                <rect key="frame" x="20" y="118" width="374" height="232"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A23-vV-e81" userLabel="Base View">
+                                <rect key="frame" x="0.0" y="-27" width="414" height="950"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
+                                        <rect key="frame" x="20" y="522" width="374" height="299"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="D8K-HE-6zh" appends="YES" id="kwo-Uu-5Oi"/>
+                                        </connections>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Memory Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eT-6W-RUJ">
+                                        <rect key="frame" x="72" y="130" width="270" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="I feel......" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-JJ-AYT">
+                                        <rect key="frame" x="20" y="199" width="374" height="232"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tap to Select Image" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
-                                <rect key="frame" x="20" y="434" width="374" height="299"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="D8K-HE-6zh" appends="YES" id="kwo-Uu-5Oi"/>
-                                </connections>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhk-Hn-Z1I" userLabel="Keyboard Layout Guide View">
-                                <rect key="frame" x="0.0" y="741" width="414" height="101"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="950" id="PZb-u4-QoG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhk-Hn-Z1I" userLabel="Save Pop Up View">
+                                <rect key="frame" x="24" y="317" width="370" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vPf-8A-mkH">
-                                        <rect key="frame" x="16" y="4" width="390" height="92.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vPf-8A-mkH">
+                                        <rect key="frame" x="0.0" y="37" width="366" height="126.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual Sentiment Override" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul3-5w-uaZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System Determines your senitments to be:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npU-aL-135">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Tap to Manually Override Below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul3-5w-uaZ">
+                                                <rect key="frame" x="0.0" y="29" width="366" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="QH1-LS-Jp6">
-                                                <rect key="frame" x="0.0" y="20.5" width="390" height="72"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QH1-LS-Jp6">
+                                                <rect key="frame" x="0.0" y="54.5" width="366" height="72"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzF-Ax-KoJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="54" height="72"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzF-Ax-KoJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="😄"/>
+                                                        <connections>
+                                                            <action selector="To100Override:" destination="ddc-n0-wXb" eventType="touchUpInside" id="Iqp-qO-ofY"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTL-17-eF4">
-                                                        <rect key="frame" x="84" y="0.0" width="54" height="72"/>
+                                                        <rect key="frame" x="90" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="🙂"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5d-cv-jCa">
-                                                        <rect key="frame" x="168" y="0.0" width="54" height="72"/>
+                                                        <rect key="frame" x="164" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="😐"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNN-9L-hxC">
-                                                        <rect key="frame" x="252" y="0.0" width="54" height="72"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNN-9L-hxC">
+                                                        <rect key="frame" x="238" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="☹️"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJu-kR-3Sy">
-                                                        <rect key="frame" x="336" y="0.0" width="54" height="72"/>
+                                                        <rect key="frame" x="312" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="😭"/>
                                                     </button>
@@ -224,22 +243,13 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Analyzer Ready" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmu-vR-xzo">
-                                <rect key="frame" x="99" y="378" width="282" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="😶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta6-m0-Fu6">
-                                <rect key="frame" x="46" y="358" width="54" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="A23-vV-e81" firstAttribute="centerX" secondItem="aVq-jV-7KX" secondAttribute="centerX" id="CI7-DB-8HN"/>
+                            <constraint firstItem="A23-vV-e81" firstAttribute="centerY" secondItem="aVq-jV-7KX" secondAttribute="centerY" id="Rop-Sh-Kvh"/>
+                            <constraint firstItem="A23-vV-e81" firstAttribute="width" secondItem="7x1-uN-miR" secondAttribute="width" id="oON-Jh-a9v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7x1-uN-miR"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Memory" id="Aq2-bN-JtU">
@@ -248,19 +258,22 @@
                                 <action selector="cancel:" destination="ddc-n0-wXb" id="qpM-2h-7ca"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="0fp-4U-qql"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="0fp-4U-qql">
+                            <connections>
+                                <action selector="bringUpSavePopUpView:" destination="ddc-n0-wXb" id="SF9-Z7-h4X"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="newMemoryAnalyzerState" destination="hmu-vR-xzo" id="gc3-cF-oTt"/>
+                        <outlet property="baseView" destination="A23-vV-e81" id="HVl-5L-yLR"/>
                         <outlet property="newMemoryContent" destination="ozQ-JJ-AYT" id="xha-UM-OKl"/>
                         <outlet property="newMemoryImage" destination="tbE-Je-rp1" id="Mu6-T3-LoH"/>
-                        <outlet property="newMemoryKeyboardLayoutGuideView" destination="Yhk-Hn-Z1I" id="Fzf-d5-H3O"/>
                         <outlet property="newMemoryOverride0To20" destination="XJu-kR-3Sy" id="gAv-Fa-duu"/>
                         <outlet property="newMemoryOverride20To40" destination="RNN-9L-hxC" id="oYp-FY-QU0"/>
                         <outlet property="newMemoryOverride40To60" destination="S5d-cv-jCa" id="0Ef-4K-hFe"/>
                         <outlet property="newMemoryOverride60To80" destination="qTL-17-eF4" id="WOD-5e-rsQ"/>
                         <outlet property="newMemoryOverride80To100" destination="XzF-Ax-KoJ" id="mbu-b4-Lfg"/>
-                        <outlet property="newMemoryResultEmoji" destination="ta6-m0-Fu6" id="pEw-nf-8vn"/>
+                        <outlet property="newMemorySavePopUpView" destination="Yhk-Hn-Z1I" id="Nw0-Eq-HEa"/>
                         <outlet property="newMemoryTitle" destination="8eT-6W-RUJ" id="vpQ-eP-J2y"/>
                         <outlet property="saveMemoryBarButton" destination="0fp-4U-qql" id="iHC-MT-ev6"/>
                     </connections>
@@ -272,7 +285,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3615.9420289855075" y="497.54464285714283"/>
+            <point key="canvasLocation" x="3634.7826086956525" y="494.86607142857139"/>
         </scene>
         <!--Memory Details-->
         <scene sceneID="r2n-qS-AZP">
@@ -376,7 +389,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Tap to Select Image" width="361" height="293"/>
         <image name="first" width="30" height="30"/>
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>

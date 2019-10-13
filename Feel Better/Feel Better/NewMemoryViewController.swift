@@ -14,11 +14,10 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	@IBOutlet weak var newMemoryTitle: UITextField!
 	@IBOutlet weak var newMemoryContent: UITextView!
 	@IBOutlet weak var newMemoryImage: UIImageView!
-	@IBOutlet weak var newMemoryResultEmoji: UILabel!
-	@IBOutlet weak var newMemoryAnalyzerState: UILabel!
+	@IBOutlet weak var baseView: UIView!
 	
 	// Keyboard Layout Guide UI Elements
-	@IBOutlet weak var newMemoryKeyboardLayoutGuideView: UIView!
+	@IBOutlet weak var newMemorySavePopUpView: UIView!
 	@IBOutlet weak var newMemoryOverride80To100: UIButton!
 	@IBOutlet weak var newMemoryOverride60To80: UIButton!
 	@IBOutlet weak var newMemoryOverride40To60: UIButton!
@@ -26,15 +25,34 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	@IBOutlet weak var newMemoryOverride0To20: UIButton!
 	
 	@IBOutlet weak var saveMemoryBarButton: UIBarButtonItem!
+	@IBAction func bringUpSavePopUpView(_ sender: UIBarButtonItem) {
+		newMemorySavePopUpView.setIsHidden(false, animated: true)
+		let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        visualEffectView.frame = baseView.bounds
+        visualEffectView.tag = 1
+        baseView.addSubview(visualEffectView)
+        saveMemoryBarButton.isEnabled = false
+	}
+	
+	// to dismiss SavePopUpView on tap outside the view and remove blur
+	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+	{
+		if touches.first?.view?.tag == 1{
+			newMemorySavePopUpView.setIsHidden(true, animated: true)
+			super.touchesEnded(touches , with: event)
+		}
+		baseView.subviews.filter({$0.tag == 1}).forEach({$0.removeFromSuperview()})
+		saveMemoryBarButton.isEnabled = true
+	}
 	
 	@IBAction func cancel(_ sender: UIBarButtonItem) {
 		dismiss(animated: true, completion: nil)
 	}
 	
-	private func updateSaveButtonState() {
-		let text = newMemoryContent.text ?? ""
-        saveMemoryBarButton.isEnabled = !text.isEmpty
-	}
+//	private func updateSaveButtonState() {
+//		let text = newMemoryContent.text ?? ""
+//        saveMemoryBarButton.isEnabled = !text.isEmpty
+//	}
 	
 	let hapticNotification = UINotificationFeedbackGenerator()
 	var alert = UIAlertController()
@@ -70,10 +88,17 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		newMemoryContent.returnKeyType = .done
 		newMemoryContent.delegate = self
 		UIImagePicker.delegate = self
-		updateSaveButtonState()
+		//updateSaveButtonState()
+		saveMemoryBarButton.isEnabled = false
+		newMemorySavePopUpView.isHidden = true
 		
-		// Keyboard Layout Guide; pin manual sentiments override view to the keyboard
-		newMemoryKeyboardLayoutGuideView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
+		// rounded corner for pop up view
+		newMemorySavePopUpView.layer.cornerRadius = 10;
+		newMemorySavePopUpView.layer.masksToBounds = true;
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		newMemorySavePopUpView.isHidden = true
 	}
 	
 	//MARK: newMemoryTitle actions
@@ -89,7 +114,8 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        updateSaveButtonState()
+        //updateSaveButtonState()
+        saveMemoryBarButton.isEnabled = true
         navigationItem.title = textField.text
     }
     
@@ -117,10 +143,10 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	//MARK: Seugue to tableview with created memory to save
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		super.prepare(for: segue, sender: sender)
-		guard let saveButton = sender as? UIBarButtonItem, saveButton === saveMemoryBarButton else {
-			print("Cancelling Action,  The Save Button was not pressed")
-			return
-		}
+//		guard let saveButton = sender as? UIBarButtonItem, saveButton === saveMemoryBarButton else {
+//			print("Cancelling Action,  The Save Button was not pressed")
+//			return
+//		}
 		
 		let titleToSave = newMemoryTitle.text
 		let contentToSave = newMemoryContent.text
@@ -137,4 +163,34 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		
 		memoryToSave = Memory(title: titleToSave ?? "", content: contentToSave ?? "", sentiment: sentimentToSave, saveDate: dateToSave, image: imageToSave)
 	}
+	
+	//MARK: Result / Override PopUp
+	
+	
+	@IBAction func To100Override(_ sender: UIButton) {
+		newMemorySentiment = 90
+		performSegue(withIdentifier: "AddNewMemory", sender: Any?.self)
+	}
+	
+	
+	
+}
+
+//MARK: extension to UIView to animate isHidden
+extension UIView {
+    func setIsHidden(_ hidden: Bool, animated: Bool) {
+        if animated {
+            if self.isHidden && !hidden {
+                self.alpha = 0.0
+                self.isHidden = false
+            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.alpha = hidden ? 0.0 : 1.0
+            }) { (complete) in
+                self.isHidden = hidden
+            }
+        } else {
+            self.isHidden = hidden
+        }
+    }
 }

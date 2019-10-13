@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6dK-UP-vZc">
-                                <rect key="frame" x="158" y="126" width="98" height="93"/>
+                                <rect key="frame" x="158" y="126" width="98.000000000000014" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="0IB-rc-AdY"/>
                                     <constraint firstAttribute="height" constant="93" id="XCG-xk-wIq"/>
@@ -441,7 +441,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A23-vV-e81" userLabel="Base View">
                                 <rect key="frame" x="0.0" y="-27" width="414" height="950"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tap to Select Image" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
                                         <rect key="frame" x="20" y="522" width="374" height="299"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
@@ -826,6 +826,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Tap to Select Image" width="361" height="293"/>
         <image name="bestFriendIcon" width="60" height="76.5"/>
         <image name="logo" width="53.5" height="55"/>
         <image name="plus" catalog="system" width="64" height="56"/>

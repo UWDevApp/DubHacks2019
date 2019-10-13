@@ -28,6 +28,10 @@ public class Firebase {
     // ref.child("name").childByAutoId().setValue("visual")
     // ref.child("name").childByAutoId().setValue("phanith")
     
+    func deleteMemory(withID documentID: String) {
+        diariesRef.document(documentID).delete()
+    }
+    
     func replaceMemory<T>(withID documentID: String, _ property: KeyPath<LocalMemory, T>, with newValue: T) {
         let ref = diariesRef.document(documentID)
         switch property._kvcKeyPathString! {
@@ -67,10 +71,11 @@ public class Firebase {
     }
     
     /// Add a new document in collection "diaries"
-    func saveNewMemory(_ memory: LocalMemory, tags: [String]) {
+    func saveNewMemory(_ memory: LocalMemory, tags: [String]) -> String {
         let newMemoryRef = diariesRef.document()
         let documentID = newMemoryRef.documentID
         replaceMemory(withID: documentID, with: memory, tags: tags)
+        return documentID
     }
     
     func getMemory(withID documentID: String, then process: @escaping (Result<CloudMemory, Error>) -> Void) {
@@ -89,11 +94,12 @@ public class Firebase {
                     return print("Wrong memory format: \(data)")
             }
             self.getImage(for: documentID) { (result) in
-                process(result.map {
-                    CloudMemory(documentID: documentID, title: title, content: content,
+                process(.success(CloudMemory(
+                    documentID: documentID, title: title, content: content,
                     sentiment: sentiment, tags: tags,
-                    saveDate: saveTimestamp.dateValue(), imageURL: $0)
-                })
+                    saveDate: saveTimestamp.dateValue(),
+                    imageURL: try? result.get()
+                )))
             }
         }
     }
@@ -164,6 +170,6 @@ extension Firebase {
         return diariesRef
             .whereField("saveDate", isLessThanOrEqualTo: Timestamp(date: endDate))
             .whereField("saveDate", isGreaterThanOrEqualTo: Timestamp(date: startDate))
-            .order(by: "saveDate", descending: true)
+            .order(by: "saveDate")
     }
 }

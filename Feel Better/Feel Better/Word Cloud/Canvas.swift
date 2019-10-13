@@ -26,8 +26,8 @@ final class Canvas {
 
     
     func add(word: Word) {
-        let startPixel = CGPoint(x: Int.random(in: 0...Int(size.width - word.size.width)),
-                                 y: Int.random(in: 0...Int(size.height - word.size.height)))
+        let startPixel = CGPoint(x: Int.random(in: 0...abs(Int(size.width - word.size.width))),
+                                 y: Int.random(in: 0...abs(Int(size.height - word.size.height))))
 
         let wordRepresentation = WordImage(point: startPixel, image: draw(word, at: startPixel), word: word)
         if intersected(word: wordRepresentation, image: currentImage) { return }

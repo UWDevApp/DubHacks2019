@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0E06F92352935800A916D7 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E06F82352935800A916D7 /* GoogleService-Info (1).plist */; };
+		1C0E06F92352935800A916D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E06F82352935800A916D7 /* GoogleService-Info.plist */; };
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0482352746F00C8BE8D /* FirstViewController.swift */; };
@@ -15,11 +15,19 @@
 		D20CB04E2352746F00C8BE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20CB04C2352746F00C8BE8D /* Main.storyboard */; };
 		D20CB0502352747000C8BE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20CB04F2352747000C8BE8D /* Assets.xcassets */; };
 		D20CB0532352747000C8BE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */; };
+		D20CB05B235275F900C8BE8D /* TextAnalyzer+Azure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB05A235275F900C8BE8D /* TextAnalyzer+Azure.swift */; };
+		D25E5F6723529AA100C105DC /* SentimentAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */; };
+		D25E5F6923529F7200C105DC /* TextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6823529F7200C105DC /* TextAnalyzer.swift */; };
+		D25E5F6B23529FE300C105DC /* KeyPhraseExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */; };
+		D25E5F6D2352A4D700C105DC /* EntityNamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6C2352A4D700C105DC /* EntityNamer.swift */; };
+		D25E5F6F2352B0AB00C105DC /* ImageSuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6E2352B0AB00C105DC /* ImageSuggestionProvider.swift */; };
+		D25E5F722352DB0900C105DC /* ComputerVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F712352DB0900C105DC /* ComputerVision.swift */; };
+		D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27ABDD62353096A00E61709 /* ImageTagMemory.swift */; };
 		E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C0E06F82352935800A916D7 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
+		1C0E06F82352935800A916D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.debug.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.debug.xcconfig"; sourceTree = "<group>"; };
 		B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feel_Better.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15896BFDF0C32AA62D5DAE5 /* Pods-Feel Better.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.release.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.release.xcconfig"; sourceTree = "<group>"; };
@@ -32,6 +40,14 @@
 		D20CB04F2352747000C8BE8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20CB0522352747000C8BE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D20CB0542352747000C8BE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D20CB05A235275F900C8BE8D /* TextAnalyzer+Azure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextAnalyzer+Azure.swift"; sourceTree = "<group>"; };
+		D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalyzer.swift; sourceTree = "<group>"; };
+		D25E5F6823529F7200C105DC /* TextAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAnalyzer.swift; sourceTree = "<group>"; };
+		D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPhraseExtractor.swift; sourceTree = "<group>"; };
+		D25E5F6C2352A4D700C105DC /* EntityNamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityNamer.swift; sourceTree = "<group>"; };
+		D25E5F6E2352B0AB00C105DC /* ImageSuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSuggestionProvider.swift; sourceTree = "<group>"; };
+		D25E5F712352DB0900C105DC /* ComputerVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerVision.swift; sourceTree = "<group>"; };
+		D27ABDD62353096A00E61709 /* ImageTagMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTagMemory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +100,7 @@
 		D20CB0432352746F00C8BE8D /* Feel Better */ = {
 			isa = PBXGroup;
 			children = (
+				D20CB05C235275FE00C8BE8D /* Azure */,
 				D20CB0442352746F00C8BE8D /* AppDelegate.swift */,
 				D20CB0462352746F00C8BE8D /* SceneDelegate.swift */,
 				D20CB0482352746F00C8BE8D /* FirstViewController.swift */,
@@ -92,9 +109,40 @@
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
 				D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */,
 				D20CB0542352747000C8BE8D /* Info.plist */,
-				1C0E06F82352935800A916D7 /* GoogleService-Info (1).plist */,
+				1C0E06F82352935800A916D7 /* GoogleService-Info.plist */,
 			);
 			path = "Feel Better";
+			sourceTree = "<group>";
+		};
+		D20CB05C235275FE00C8BE8D /* Azure */ = {
+			isa = PBXGroup;
+			children = (
+				D25E5F702352D9F900C105DC /* Text Analyzer */,
+				D288FAFD23530EC600D72B86 /* Computer Vision */,
+			);
+			path = Azure;
+			sourceTree = "<group>";
+		};
+		D25E5F702352D9F900C105DC /* Text Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				D25E5F6823529F7200C105DC /* TextAnalyzer.swift */,
+				D20CB05A235275F900C8BE8D /* TextAnalyzer+Azure.swift */,
+				D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */,
+				D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */,
+				D25E5F6C2352A4D700C105DC /* EntityNamer.swift */,
+			);
+			path = "Text Analyzer";
+			sourceTree = "<group>";
+		};
+		D288FAFD23530EC600D72B86 /* Computer Vision */ = {
+			isa = PBXGroup;
+			children = (
+				D25E5F6E2352B0AB00C105DC /* ImageSuggestionProvider.swift */,
+				D25E5F712352DB0900C105DC /* ComputerVision.swift */,
+				D27ABDD62353096A00E61709 /* ImageTagMemory.swift */,
+			);
+			path = "Computer Vision";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,7 +208,7 @@
 				D20CB0532352747000C8BE8D /* LaunchScreen.storyboard in Resources */,
 				D20CB0502352747000C8BE8D /* Assets.xcassets in Resources */,
 				D20CB04E2352746F00C8BE8D /* Main.storyboard in Resources */,
-				1C0E06F92352935800A916D7 /* GoogleService-Info (1).plist in Resources */,
+				1C0E06F92352935800A916D7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,10 +261,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20CB05B235275F900C8BE8D /* TextAnalyzer+Azure.swift in Sources */,
 				D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */,
 				D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */,
+				D25E5F722352DB0900C105DC /* ComputerVision.swift in Sources */,
+				D25E5F6B23529FE300C105DC /* KeyPhraseExtractor.swift in Sources */,
+				D25E5F6723529AA100C105DC /* SentimentAnalyzer.swift in Sources */,
 				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,
+				D25E5F6F2352B0AB00C105DC /* ImageSuggestionProvider.swift in Sources */,
+				D25E5F6D2352A4D700C105DC /* EntityNamer.swift in Sources */,
+				D25E5F6923529F7200C105DC /* TextAnalyzer.swift in Sources */,
 				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,
+				D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

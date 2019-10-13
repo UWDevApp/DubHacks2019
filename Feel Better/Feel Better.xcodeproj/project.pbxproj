@@ -19,6 +19,7 @@
 		D25E5F6723529AA100C105DC /* SentimentAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */; };
 		D25E5F6923529F7200C105DC /* TextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6823529F7200C105DC /* TextAnalyzer.swift */; };
 		D25E5F6B23529FE300C105DC /* KeyPhraseExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */; };
+		D25E5F6D2352A4D700C105DC /* EntityNamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6C2352A4D700C105DC /* EntityNamer.swift */; };
 		E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalyzer.swift; sourceTree = "<group>"; };
 		D25E5F6823529F7200C105DC /* TextAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAnalyzer.swift; sourceTree = "<group>"; };
 		D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPhraseExtractor.swift; sourceTree = "<group>"; };
+		D25E5F6C2352A4D700C105DC /* EntityNamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityNamer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				D20CB05A235275F900C8BE8D /* Azure.swift */,
 				D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */,
 				D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */,
+				D25E5F6C2352A4D700C105DC /* EntityNamer.swift */,
 			);
 			path = Azure;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				D25E5F6B23529FE300C105DC /* KeyPhraseExtractor.swift in Sources */,
 				D25E5F6723529AA100C105DC /* SentimentAnalyzer.swift in Sources */,
 				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,
+				D25E5F6D2352A4D700C105DC /* EntityNamer.swift in Sources */,
 				D25E5F6923529F7200C105DC /* TextAnalyzer.swift in Sources */,
 				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,
 			);

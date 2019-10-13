@@ -12,6 +12,12 @@ import NaturalLanguage
 public enum TextAnalzyer {
     public typealias Result<T> = Swift.Result<T, Error>
     
+    public static func namedEntities(in text: String,
+                                     then process: @escaping (Result<[Entity]>) -> Void) {
+        request("text/analytics/v2.1/entities", on: text)
+        { (result: Result<Entity.Wrapper>) in process(result.map { $0.entities }) }
+    }
+    
     public static func keyPhrases(in text: String,
                                   then process: @escaping (Result<[String]>) -> Void) {
         request("text/analytics/v2.1/keyPhrases", on: text)

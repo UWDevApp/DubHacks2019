@@ -47,6 +47,7 @@
 		D25E5F722352DB0900C105DC /* ComputerVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F712352DB0900C105DC /* ComputerVision.swift */; };
 		D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27ABDD62353096A00E61709 /* ImageTagMemory.swift */; };
 		D288FB002353169200D72B86 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288FAFF2353169200D72B86 /* Firebase.swift */; };
+		D288FB0323532FD400D72B86 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D288FB0223532FD400D72B86 /* Kingfisher */; };
 		E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D288FB0323532FD400D72B86 /* Kingfisher in Frameworks */,
 				A0AF33AA2352C1C80065ECD1 /* KeyboardLayoutGuide in Frameworks */,
 				E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */,
 			);
@@ -260,6 +262,7 @@
 			name = "Feel Better";
 			packageProductDependencies = (
 				A0AF33A92352C1C80065ECD1 /* KeyboardLayoutGuide */,
+				D288FB0223532FD400D72B86 /* Kingfisher */,
 			);
 			productName = "Feel Better";
 			productReference = D20CB0412352746F00C8BE8D /* Feel Better.app */;
@@ -291,6 +294,7 @@
 			mainGroup = D20CB0382352746F00C8BE8D;
 			packageReferences = (
 				A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */,
+				D288FB0123532FD400D72B86 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D20CB0422352746F00C8BE8D /* Products */;
 			projectDirPath = "";
@@ -608,6 +612,14 @@
 				minimumVersion = 1.5.0;
 			};
 		};
+		D288FB0123532FD400D72B86 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -615,6 +627,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */;
 			productName = KeyboardLayoutGuide;
+		};
+		D288FB0223532FD400D72B86 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D288FB0123532FD400D72B86 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

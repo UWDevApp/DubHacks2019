@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KeyboardLayoutGuide",
+        "repositoryURL": "https://github.com/freshOS/KeyboardLayoutGuide.git",
+        "state": {
+          "branch": null,
+          "revision": "7cf28359ec189dd47496211127155f6ddf23482a",
+          "version": "1.5.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

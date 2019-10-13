@@ -94,11 +94,12 @@ public class Firebase {
                     return print("Wrong memory format: \(data)")
             }
             self.getImage(for: documentID) { (result) in
-                process(result.map {
-                    CloudMemory(documentID: documentID, title: title, content: content,
+                process(.success(CloudMemory(
+                    documentID: documentID, title: title, content: content,
                     sentiment: sentiment, tags: tags,
-                    saveDate: saveTimestamp.dateValue(), imageURL: $0)
-                })
+                    saveDate: saveTimestamp.dateValue(),
+                    imageURL: try? result.get()
+                )))
             }
         }
     }
@@ -167,7 +168,7 @@ extension Firebase {
     
     private func filtered(between startDate: Date, and endDate: Date) -> Query {
         return diariesRef
-            // .whereField("saveDate", isLessThanOrEqualTo: Timestamp(date: endDate))
+            .whereField("saveDate", isLessThanOrEqualTo: Timestamp(date: endDate))
             .whereField("saveDate", isGreaterThanOrEqualTo: Timestamp(date: startDate))
             .order(by: "saveDate", descending: true)
     }

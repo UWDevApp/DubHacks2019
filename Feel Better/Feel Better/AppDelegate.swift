@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let today = Date()
         let cal = Calendar.current
         for (index, datium) in data.enumerated() {
-            add(title: datium.0, content: datium.1, date: cal.date(byAdding: .day, value: index, to: today)!)
+            add(title: datium.0, content: datium.1, date: cal.date(byAdding: .day, value: -index, to: today)!)
         }
     }
 

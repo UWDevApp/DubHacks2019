@@ -9,7 +9,6 @@
 import UIKit
 //import LocalAuthentication
 
-
 class MemoriesTableViewController: UITableViewController {
 	
 	@IBOutlet var memoriesTableView: UITableView!
@@ -22,7 +21,6 @@ class MemoriesTableViewController: UITableViewController {
 	// var memoriesTableViewArray: [Memory] = []
 	
 	var cameBackFromUnwind: Bool = false
-	
     
 	//MARK: alert controller template
 	func showAlertController(_ message: String) {
@@ -42,10 +40,13 @@ class MemoriesTableViewController: UITableViewController {
             switch result {
             case .success(let ids):
                 self?.documentIDs = ids
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 186.0
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -114,7 +115,8 @@ class MemoriesTableViewController: UITableViewController {
 			}
 			// let selectedMemory = memoriesTableViewArray[indexPath.row]
             
-			destinationViewController.memoryFromSegue = selectedMemory
+            let cell = tableView.cellForRow(at: indexPath) as! MemoryTableViewCell
+            destinationViewController.memoryFromSegue = cell.memory
 			
 			//case "EditEvent":
 			// guard let editEventsViewController = segue.destination as?

@@ -14,7 +14,8 @@ class MemoryTableViewCell: UITableViewCell {
 	@IBOutlet weak var memoryCellEmoji: UILabel!
 	@IBOutlet weak var memoryCellDateString: UILabel!
 	@IBOutlet weak var memoryCellUIImage: UIImageView!
-	
+    @IBOutlet weak var bodyTextView: UITextView!
+    
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

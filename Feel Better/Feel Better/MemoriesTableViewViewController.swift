@@ -9,6 +9,7 @@
 import UIKit
 //import LocalAuthentication
 
+
 class MemoriesTableViewController: UITableViewController {
 	
 	@IBOutlet var memoriesTableView: UITableView!
@@ -18,10 +19,11 @@ class MemoriesTableViewController: UITableViewController {
 	var alert = UIAlertController()
 	let dateFormatter = DateFormatter()
 	
-	var memoriesTableViewArray: [Memory] = []
+	var memoriesTableViewArray: [Memory] = [Memory(title: "Best Day Ever", content: "This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever This is the best day ever ", sentiment: 100, saveDate: Date(), image: UIImage(named: "Image")),Memory(title: "Best Day Ever", content: "This is the best day ever This is the best day ever This is the best day ever This is the best day ever ", sentiment: 100, saveDate: Date(), image: UIImage(named: "image"))]
 	
 	var cameBackFromUnwind: Bool = false
 	
+    
 	//MARK: alert controller template
 	func showAlertController(_ message: String) {
 		let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -38,12 +40,10 @@ class MemoriesTableViewController: UITableViewController {
 		// Configure dateFormatter
 		dateFormatter.locale = Locale(identifier: "en_US")
 		dateFormatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd HH:mm:ss")
-		
-		// Add blur effect to tableview before ID is used to unlock
-		let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-		visualEffectView.frame = memoriesTableView.bounds
-		visualEffectView.tag = 1
-		memoriesTableView.addSubview(visualEffectView)
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.tableView.estimatedRowHeight = 186.0
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -63,49 +63,7 @@ class MemoriesTableViewController: UITableViewController {
 		}
 	}
 	
-	//MARK: Local Authentication
-	//	func authentication(){
-	//		let context = LAContext()
-	//		var error: NSError?
-	//
-	//		// check if ID is available
-	//		if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-	//			let reason = "Authenticate to Access Memories"
-	//			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason ) { success, error in
-	//				if success {
-	//					// Move to the main thread because a state update triggers UI changes.
-	//					self.showAlertController("Welcome!")
-	//				} else {
-	//					let reason = "Authenticate to Access Memories using password"
-	//						context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
-	//
-	//						if success {
-	//						// Move to the main thread because a state update triggers UI changes.
-	//							self.showAlertController("Welcome!")
-	//						} else {
-	//							self.showAlertController("Authentication Failed")
-	//						}
-	//					}
-	//				}
-	//			}
-	//		} else {
-	//			let reason = "Authenticate to Access Memories using password"
-	//			context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
-	//
-	//				if success {
-	//					self.showAlertController("Welcome!")
-	//				} else {
-	//					self.showAlertController("Authentication Failed")
-	//				}
-	//			}
-	//		}
-	//	}
-	
 	//MARK: Tableview Data Sources
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		// #warning Incomplete implementation, return the number of sections
-		return 1
-	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		// #warning Incomplete implementation, return the number of rows
@@ -128,7 +86,11 @@ class MemoriesTableViewController: UITableViewController {
 			cell.memoryCellUIImage.isHidden = true
 		}
 		cell.memoryCellEmoji.text = memory.sentimentEmoji
-		cell.memoryCellDateString.text = dateFormatter.string(from: memory.saveDate)
+        let dateString = dateFormatter.string(from: memory.saveDate)
+        cell.bodyTextView.text = memory.content
+        cell.bodyTextView.textContainer.maximumNumberOfLines = 3
+        cell.bodyTextView.sizeToFit()
+		cell.memoryCellDateString.text = dateString
 		return cell
 	}
 	

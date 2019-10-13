@@ -72,8 +72,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	}
 	
 	// to dismiss SavePopUpView on tap outside the view and remove blur
-	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
-	{
+	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		if touches.first?.view?.tag == 1 {
 			newMemorySavePopUpView.setIsHidden(true, animated: true)
 			super.touchesEnded(touches , with: event)
@@ -106,7 +105,8 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		present(UIImagePicker, animated: true, completion: nil)
 	}
 	
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+	func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             newMemoryImage.image = pickedImage
         }
@@ -236,10 +236,18 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	//MARK: applies the array of images returned from releventImages to display on the UI and prompt the user to select one or cancel
 	private func processImageSuggestions(suggestions: [ImageSuggestionProvider.ImageSuggestion]) {
 		let images: [UIImage] = suggestions.prefix(6).map { $0.0 }
-        imageSuggestionView.isHidden = images.isEmpty
-        
-        for i in images.indices {
-            imageSuggestionViews[i].image = images[i]
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                guard let self = self else { return }
+                self.imageSuggestionView.isHidden = images.isEmpty
+                
+                for i in images.indices {
+                    self.imageSuggestionViews[i].image = images[i]
+                }
+                for i in images.count..<self.imageSuggestionViews.count {
+                    self.imageSuggestionViews[i].image = nil
+                }
+            }
         }
 	}
 	

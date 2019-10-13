@@ -16,6 +16,17 @@ extension Date {
     }
 }
 
+extension Array where Element == Int {
+    var isNegative: Bool {
+        if let last = last, last < 30 {
+            return true
+        }
+        return count > 3
+            && self[count - 1] <= self[count - 2]
+            && self[count - 2] <= self[count - 3]
+    }
+}
+
 class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     // MARK: Outlet
@@ -29,7 +40,9 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     var trends = [0] {
         didSet {
-            
+            if oldValue.isNegative != trends.isNegative {
+                homepageTableView.reloadData()
+            }
         }
     }
     
@@ -38,8 +51,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             homepageTableView.reloadData()
         }
     }
-    
-    
     
     // MARK: Check Login
     
@@ -90,7 +101,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         homepageTableView.backgroundColor = .clear
         view.backgroundColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1.0)
         self.title = "Home"
-        self.navigationController?.navigationBar.topItem?.title = "Good Afternoon, Kevin"
+        self.navigationController?.navigationBar.topItem?.title = "Hi, Kevin"
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -114,17 +125,26 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Trends
-        if indexPath.section == 0 {
-            return makeTrendsCell(for: indexPath)
-        } else if indexPath.section == 1 {
-            // Get Support
-            return makeGetHelpCell(for: indexPath)
+        if trends.isNegative {
+            if indexPath.section == 0 {
+                return makeGetHelpCell(for: indexPath)
+            } else if indexPath.section == 1 {
+                return makeTrendsCell(for: indexPath)
+            } else {
+                return makeWordsCell(for: indexPath)
+            }
         } else {
-            return makeWordsCell(for: indexPath)
+            if indexPath.section == 0 {
+                return makeWordsCell(for: indexPath)
+            } else if indexPath.section == 1 {
+                return makeTrendsCell(for: indexPath)
+            } else {
+                return makeGetHelpCell(for: indexPath)
+            }
         }
     }
     
+    // Trends
     private func makeTrendsCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = homepageTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             as! HomePageTableViewCell
@@ -165,6 +185,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return cell
     }
     
+    // Get Support
     private func makeGetHelpCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = homepageTableView.dequeueReusableCell(withIdentifier: "supportCell", for: indexPath)
             as! HomePageTableViewCell

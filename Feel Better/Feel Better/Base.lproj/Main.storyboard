@@ -115,7 +115,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Memories" id="cPP-e8-DB5">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="C00-xb-ljt"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="C00-xb-ljt">
+                            <connections>
+                                <segue destination="Rha-KV-Xlr" kind="presentation" id="WLf-W5-JnK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="Add_Memory_Button" destination="C00-xb-ljt" id="CCg-Ad-cpI"/>
@@ -125,6 +129,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KR2-Xm-R8G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2047.826086956522" y="498.88392857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3tX-hm-vHf">
+            <objects>
+                <navigationController id="Rha-KV-Xlr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vnj-ee-g5x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ddc-n0-wXb" kind="relationship" relationship="rootViewController" id="XF0-e8-jzc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aIZ-Aw-MT5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2820" y="495"/>
+        </scene>
+        <!--New Memory-->
+        <scene sceneID="975-82-Sm7">
+            <objects>
+                <viewController id="ddc-n0-wXb" customClass="NewMemoryViewController" customModule="Feel_Better" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aVq-jV-7KX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7x1-uN-miR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Memory" id="Aq2-bN-JtU">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="mo8-9B-ZNJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="0fp-4U-qql"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MXG-gS-EG3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3617" y="498"/>
         </scene>
         <!--Memory Details-->
         <scene sceneID="r2n-qS-AZP">

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */; };
 		A0AF33A52352B2CA0065ECD1 /* MemoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */; };
 		A0AF33A72352C0110065ECD1 /* NewMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A62352C0110065ECD1 /* NewMemoryViewController.swift */; };
+		A0AF33AA2352C1C80065ECD1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = A0AF33A92352C1C80065ECD1 /* KeyboardLayoutGuide */; };
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0482352746F00C8BE8D /* FirstViewController.swift */; };
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0AF33AA2352C1C80065ECD1 /* KeyboardLayoutGuide in Frameworks */,
 				E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +129,9 @@
 			dependencies = (
 			);
 			name = "Feel Better";
+			packageProductDependencies = (
+				A0AF33A92352C1C80065ECD1 /* KeyboardLayoutGuide */,
+			);
 			productName = "Feel Better";
 			productReference = D20CB0412352746F00C8BE8D /* Feel Better.app */;
 			productType = "com.apple.product-type.application";
@@ -155,6 +160,9 @@
 				Base,
 			);
 			mainGroup = D20CB0382352746F00C8BE8D;
+			packageReferences = (
+				A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */,
+			);
 			productRefGroup = D20CB0422352746F00C8BE8D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -430,6 +438,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/KeyboardLayoutGuide.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0AF33A92352C1C80065ECD1 /* KeyboardLayoutGuide */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0AF33A82352C1C80065ECD1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */;
+			productName = KeyboardLayoutGuide;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D20CB0392352746F00C8BE8D /* Project object */;
 }

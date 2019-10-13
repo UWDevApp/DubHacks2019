@@ -162,7 +162,7 @@ extension Firebase {
     
     private func filtered(between startDate: Date, and endDate: Date) -> Query {
         return diariesRef
-            .whereField("saveDate", isLessThanOrEqualTo: Timestamp(date: endDate))
+            // .whereField("saveDate", isLessThanOrEqualTo: Timestamp(date: endDate))
             .whereField("saveDate", isGreaterThanOrEqualTo: Timestamp(date: startDate))
             .order(by: "saveDate", descending: true)
     }

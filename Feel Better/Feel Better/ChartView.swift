@@ -12,7 +12,11 @@ import UIKit
     }
   
     //Weekly sample data
-    var graphPoints: [Int] = [4, 2, 15, 4, 5, 8, 3]
+    var graphPoints: [Int] = [0] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
   
     override func draw(_ rect: CGRect) {
     
@@ -104,13 +108,13 @@ import UIKit
         
         // add weekday labels
         
-        for i in 0..<7{
-            let label = UILabel(frame: CGRect(x: columnXPoint(i), y: graphHeight+topBorder, width: 10, height: 10))
-            label.font = .systemFont(ofSize: CGFloat(10))
-            label.textColor = .blue
-            label.text = "F"
-            self.addSubview(label)
-        }
+//        for i in 0..<7{
+//            let label = UILabel(frame: CGRect(x: columnXPoint(i), y: graphHeight+topBorder, width: 10, height: 10))
+//            label.font = .systemFont(ofSize: CGFloat(10))
+//            label.textColor = .blue
+//            label.text = "F"
+//            self.addSubview(label)
+//        }
     
         //Draw horizontal graph lines on the top of everything
         let linePath = UIBezierPath()
@@ -147,7 +151,7 @@ import UIKit
         middleLabel.textColor = .blue
         middleLabel.textAlignment = .right
         self.addSubview(middleLabel)
-        
+
         let maxLabel = UILabel(frame: CGRect(x: width-(margin/2), y: topBorder, width: 15, height: 20))
         maxLabel.text = "\(maxValue)"
         maxLabel.font = .systemFont(ofSize: CGFloat(10))

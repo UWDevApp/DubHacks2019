@@ -26,13 +26,8 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	
 	// Image Suggestion Pop Up View and Elements
 	@IBOutlet weak var imageSuggestionView: UIView!
-	@IBOutlet weak var imageSuggestion1: UIImageView!
-	@IBOutlet weak var imageSuggestion2: UIImageView!
-	@IBOutlet weak var imageSuggestion3: UIImageView!
-	@IBOutlet weak var imageSuggestion4: UIImageView!
-	@IBOutlet weak var imageSuggestion5: UIImageView!
-	@IBOutlet weak var imageSuggestion6: UIImageView!
-	
+    @IBOutlet var imageSuggestionViews: [UIImageView]!
+    
 	@IBOutlet weak var saveMemoryBarButton: UIBarButtonItem!
 	@IBAction func bringUpSavePopUpView(_ sender: UIBarButtonItem) {
 		// Azure sentiment API and returning sentiments and displaying accordingly
@@ -133,6 +128,8 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		newMemorySavePopUpView.layer.masksToBounds = true;
 		
 		imageSuggestionView.isHidden = true
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -233,37 +230,35 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	//MARK: applies the array of images returned from releventImages to display on the UI and prompt the user to select one or cancel
 	private func processImageSuggestions(suggestions: [ImageSuggestionProvider.ImageSuggestion]) {
 		let images: [UIImage] = suggestions.prefix(6).map { $0.0 }
-		imageSuggestion1.image = images[0]
-		imageSuggestion2.image = images[1]
-		imageSuggestion3.image = images[2]
-		imageSuggestion4.image = images[3]
-		imageSuggestion5.image = images[4]
-		imageSuggestion6.image = images[5]
-		imageSuggestionView.isHidden = false
+        imageSuggestionView.isHidden = images.isEmpty
+        
+        for i in images.indices {
+            imageSuggestionViews[i].image = images[i]
+        }
 	}
 	
 	@IBAction func suggestion1Tapped(_ sender: UITapGestureRecognizer) {
-		newMemoryImage.image = imageSuggestion1.image
+		newMemoryImage.image = imageSuggestionViews[0].image
 		imageSuggestionView.isHidden = true
 	}
 	@IBAction func suggestion2Tapped(_ sender: UITapGestureRecognizer) {
-		newMemoryImage.image = imageSuggestion2.image
+		newMemoryImage.image = imageSuggestionViews[1].image
 		imageSuggestionView.isHidden = true
 	}
 	@IBAction func suggestion3Tapped(_ sender: UITapGestureRecognizer) {
-		newMemoryImage.image = imageSuggestion3.image
+		newMemoryImage.image = imageSuggestionViews[2].image
 		imageSuggestionView.isHidden = true
 	}
 	@IBAction func suggestion4Tapped(_ sender: UITapGestureRecognizer) {
-		newMemoryImage.image = imageSuggestion4.image
+		newMemoryImage.image = imageSuggestionViews[3].image
 		imageSuggestionView.isHidden = true
 	}
 	@IBAction func suggestion5Tapped(_ sender: UITapGestureRecognizer) {
-		newMemoryImage.image = imageSuggestion5.image
+		newMemoryImage.image = imageSuggestionViews[4].image
 		imageSuggestionView.isHidden = true
 	}
 	@IBAction func suggestion6Tapped(_ sender: UITapGestureRecognizer) {
-		newMemoryImage.image = imageSuggestion6.image
+		newMemoryImage.image = imageSuggestionViews[5].image
 		imageSuggestionView.isHidden = true
 	}
 

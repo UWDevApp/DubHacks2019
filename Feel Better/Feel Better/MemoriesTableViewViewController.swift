@@ -16,12 +16,12 @@ class MemoriesTableViewController: UITableViewController {
 	
 	let hapticNotification = UINotificationFeedbackGenerator()
 	var alert = UIAlertController()
-	let dateFormatter = DateFormatter()
-	
-	var memoriesTableViewArray: [Memory] = []
+
+    var documentIDs: [String] = []
+	// var memoriesTableViewArray: [Memory] = []
 	
 	var cameBackFromUnwind: Bool = false
-	
+    
 	//MARK: alert controller template
 	func showAlertController(_ message: String) {
 		let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -34,16 +34,19 @@ class MemoriesTableViewController: UITableViewController {
 		
 		// Adding editing button to the top left
 		navigationItem.leftBarButtonItem = editButtonItem
-		
-		// Configure dateFormatter
-		dateFormatter.locale = Locale(identifier: "en_US")
-		dateFormatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd HH:mm:ss")
-		
-		// Add blur effect to tableview before ID is used to unlock
-		let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-		visualEffectView.frame = memoriesTableView.bounds
-		visualEffectView.tag = 1
-		memoriesTableView.addSubview(visualEffectView)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        Firebase.database.fetchAll { [weak self] (result) in
+            switch result {
+            case .success(let ids):
+                self?.documentIDs = ids
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 186.0
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -63,79 +66,33 @@ class MemoriesTableViewController: UITableViewController {
 		}
 	}
 	
-	//MARK: Local Authentication
-	//	func authentication(){
-	//		let context = LAContext()
-	//		var error: NSError?
-	//
-	//		// check if ID is available
-	//		if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-	//			let reason = "Authenticate to Access Memories"
-	//			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason ) { success, error in
-	//				if success {
-	//					// Move to the main thread because a state update triggers UI changes.
-	//					self.showAlertController("Welcome!")
-	//				} else {
-	//					let reason = "Authenticate to Access Memories using password"
-	//						context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
-	//
-	//						if success {
-	//						// Move to the main thread because a state update triggers UI changes.
-	//							self.showAlertController("Welcome!")
-	//						} else {
-	//							self.showAlertController("Authentication Failed")
-	//						}
-	//					}
-	//				}
-	//			}
-	//		} else {
-	//			let reason = "Authenticate to Access Memories using password"
-	//			context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
-	//
-	//				if success {
-	//					self.showAlertController("Welcome!")
-	//				} else {
-	//					self.showAlertController("Authentication Failed")
-	//				}
-	//			}
-	//		}
-	//	}
-	
 	//MARK: Tableview Data Sources
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		// #warning Incomplete implementation, return the number of sections
-		return 1
-	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		// #warning Incomplete implementation, return the number of rows
-		return memoriesTableViewArray.count
+		return documentIDs.count
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
 		let cellIdentifier = "MemoryTableViewCell"
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MemoryTableViewCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+            as? MemoryTableViewCell else {
 			fatalError("The cell is not an instance of the ViewCell class")
 		}
-		let memory = memoriesTableViewArray[indexPath.row]
-		
-		//MARK: Configure MemoryTableViewCell
-		cell.memoryCellTitle.text = memory.title
-		if memory.image != nil {
-			cell.memoryCellUIImage.image = memory.image
-		} else {
-			cell.memoryCellUIImage.isHidden = true
-		}
-		cell.memoryCellEmoji.text = memory.sentimentEmoji
-		cell.memoryCellDateString.text = dateFormatter.string(from: memory.saveDate)
+        Firebase.database.getMemory(withID: documentIDs[indexPath.row]) { (result) in
+            switch result {
+            case .success(let memory):
+                cell.setMemory(memory)
+            case .failure(let error):
+                print(error)
+            }
+        }
 		return cell
 	}
 	
 	//MARK: Deleting Memories
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
-			memoriesTableViewArray.remove(at: indexPath.row)
+            Firebase.database.deleteMemory(withID: documentIDs.remove(at: indexPath.row))
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 	}
@@ -156,8 +113,10 @@ class MemoriesTableViewController: UITableViewController {
 			}
 			guard let indexPath = tableView.indexPath(for: selectedeventcell) else {fatalError("The Selected Cell is not being displayed by the table")
 			}
-			let selectedMemory = memoriesTableViewArray[indexPath.row]
-			destinationViewController.memoryFromSegue = selectedMemory
+			// let selectedMemory = memoriesTableViewArray[indexPath.row]
+            
+            let cell = tableView.cellForRow(at: indexPath) as! MemoryTableViewCell
+            destinationViewController.memoryFromSegue = cell.memory
 			
 			//case "EditEvent":
 			// guard let editEventsViewController = segue.destination as?
@@ -170,30 +129,34 @@ class MemoriesTableViewController: UITableViewController {
 		}
 	}
 	
-	@IBAction func unwindCancel(sender: UIStoryboardSegue){}
+	@IBAction func unwindCancel(sender: UIStoryboardSegue) { }
 	
 	//MARK: saving memory
 	@IBAction func unwindToMemories(sender: UIStoryboardSegue) {
-		if let sourceViewController = sender.source as? NewMemoryViewController, let memoryToSave = sourceViewController.memoryToSave {
+		if let sourceViewController = sender.source as? NewMemoryViewController,
+            let memoryToSave = sourceViewController.memoryToSave {
 			cameBackFromUnwind = true
 			if let selectedIndexPath = tableView.indexPathForSelectedRow {
-				memoriesTableViewArray[selectedIndexPath.row] = memoryToSave
+                TextAnalzyer.keyPhrases(in: memoryToSave.content) { (result) in
+                    let tags = (try? result.get()) ?? []
+                    Firebase.database.replaceMemory(withID: self.documentIDs[selectedIndexPath.row],
+                                                    with: memoryToSave, tags: tags)
+                }
 				tableView.reloadRows(at: [selectedIndexPath], with: .none)
 			} else {
-				//Adding a new event instead of editing it.
-				let newIndexPath = IndexPath(row: 0, section: 0)
-				do {
-					memoriesTableViewArray.insert(memoryToSave, at: 0)
-					//memoriesTableViewArray.append(memory)
-					DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
-						self.dismiss(animated: true, completion: nil)
-					}
-				} catch let error as NSError {
-					print("Could not save. \(error), \(error.userInfo)")
-					
-					tableView.insertRows(at: [newIndexPath], with: .automatic)
-				}
-			}
+                //Adding a new event instead of editing it.
+                let newIndexPath = IndexPath(row: 0, section: 0)
+                TextAnalzyer.keyPhrases(in: memoryToSave.content) { (result) in
+                    let tags = (try? result.get()) ?? []
+                    let id = Firebase.database.saveNewMemory(memoryToSave, tags: tags)
+                    self.documentIDs.insert(id, at: 0)
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true) {
+                            self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                        }
+                    }
+                }
+            }
 		}
 	}
 	// end of class
@@ -207,4 +170,3 @@ extension UINavigationController {
 		return previousViewController
 	}
 }
-

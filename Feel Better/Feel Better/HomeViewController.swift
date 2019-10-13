@@ -27,9 +27,19 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let titles = ["Trends","Get Support", "Keywords"]
     
     let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    var trends = [5,3,5,10,7,2,1]
+    var trends = [0] {
+        didSet {
+            
+        }
+    }
     
-    let keywordDictionary = ["Lost":5,"Hello":3,"Happy":10,"Chicken":1,"Food":8,"WOW":50]
+    var keywordDictionary = ["Lost":5,"Hello":3,"Happy":10,"Chicken":1,"Food":8,"WOW":50] {
+        didSet {
+            homepageTableView.reloadData()
+        }
+    }
+    
+    
     
     // MARK: Check Login
     
@@ -40,10 +50,30 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             print("has user")
             print(Auth.auth().currentUser!.email)
             // AppDelegate.populateFakeData()
+            let today = Date()
+            let begin = Calendar.current.date(byAdding: .day, value: -7, to: today)!
+            Firebase.database.sentiments(between: begin, and: today) { (result) in
+                switch result {
+                case .success(let trends):
+                    self.trends = trends
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            Firebase.database.keywords(between: begin, and: today) { (result) in
+                switch result {
+                case .success(let keywordDictionary):
+                    self.keywordDictionary = keywordDictionary
+                case .failure(let error):
+                    print(error)
+                }
+            }            
         } else {
             print("doesn't have user")
             self.performSegue(withIdentifier: "SignPage", sender: self)
         }
+        
+        print(keywordDictionary)
     }
     
     // MARK: viewDidLoad
@@ -92,12 +122,15 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell.titleLabel.text = titles[indexPath.section]
             cell.containerView.backgroundColor = .white
             
+            print("trends \(trends)")
+            cell.containerView.graphPoints = self.trends
+            
             cell.layer.cornerRadius = 15.0
             cell.clipsToBounds = true
             
             return cell
             
-        }else if indexPath.section == 1{
+        }else if indexPath.section == 1 {
             // Get Support
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "supportCell", for: indexPath) as! HomePageTableViewCell
@@ -123,27 +156,21 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "keywordsCell", for: indexPath) as! HomePageTableViewCell
             cell.keywordsLabel.text = "Keywords"
-            
+
             // set up word cloud
 
             let canvas = Canvas(size: cell.wordCloudImageView.frame.size)
-            
+
             for i in 0..<keywordDictionary.count {
-                
-                let interval = 50 / keywordDictionary.count
-                let sorted = sortedKeywords(keywordDictionary)
-                
-                let textFont: UIFont = .systemFont(ofSize: CGFloat(Int.random(in: 50-((i+1)*interval) ... 50-(i*interval))))
-                
-                canvas.add(word: .init(text: sorted[keywordDictionary.count - i - 1].key, font: textFont, color: UIColor.blue))
+                let textFont: UIFont = .systemFont(ofSize: CGFloat(Int.random(in: 9...20)))
+                canvas.add(word: .init(text: Array(keywordDictionary.keys)[i], font: textFont, color: .random()))
             }
-            
-            
+
+
             cell.layer.cornerRadius = 15.0
             cell.clipsToBounds = true
-            
+
             cell.wordCloudImageView.image = UIImage(cgImage: canvas.currentImage)
-            //cell.wordCloudImageView.contentMode = .scaleAspectFill
         }
         return UITableViewCell()
     }
@@ -183,17 +210,4 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     private func sortedKeywords(_ keywords: [String:Int])->[(key:String,value:Int)]{
         return keywords.sorted(by: { $0.value < $1.value })
     }
-    
-    
-    
-    
-    // MARK: - Navigation
-
-    
-
 }
-
-
-
-
-

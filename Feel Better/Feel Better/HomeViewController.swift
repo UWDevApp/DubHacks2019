@@ -48,7 +48,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         if Auth.auth().currentUser != nil {
             print("has user")
-            print(Auth.auth().currentUser!.email)
+            // print(Auth.auth().currentUser!.email)
             // AppDelegate.populateFakeData()
             let today = Date()
             let begin = Calendar.current.date(byAdding: .day, value: -7, to: today)!
@@ -114,9 +114,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // Trends
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomePageTableViewCell
             
             cell.titleLabel.text = titles[indexPath.section]
@@ -130,28 +129,40 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             return cell
             
-        }else if indexPath.section == 1 {
+        } else if indexPath.section == 1 {
             // Get Support
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "supportCell", for: indexPath) as! HomePageTableViewCell
             
             // set appearances
             cell.supportTitleLabel.text = "Get Support"
+            
             cell.bestFriendButton.setTitle("Apollo Zhu", for: .normal)
+            cell.bestFriendButton.titleLabel?.numberOfLines = 0
             cell.bestFriendButton.setTitleColor(.white, for: .normal)
+            
             cell.spButton.backgroundColor = UIColor(red: 245.0/255.0, green: 166.0/255.0, blue: 35.0/255.0, alpha: 1.0)
             cell.etButton.backgroundColor = UIColor(red: 245.0/255.0, green: 166.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            
+            cell.bestFriendButton.titleLabel?.font =  UIFont(name: "SFUIDisplay-Semibold", size: 22)
             cell.etButton.titleLabel?.font =  UIFont(name: "SFUIDisplay-Semibold", size: 17)
             cell.spButton.titleLabel?.font =  UIFont(name: "SFUIDisplay-Semibold", size: 17)
+            
             cell.spButton.setTitleColor(.white, for: .normal)
             cell.etButton.setTitleColor(.white, for: .normal)
-            cell.bestFriendButton.titleLabel?.numberOfLines = 0
-            cell.bestFriendButton.titleLabel?.font =  UIFont(name: "SFUIDisplay-Semibold", size: 22)
+            
+            cell.bestFriendButton.layer.cornerRadius = 5.0
+            cell.spButton.layer.cornerRadius = 5.0
+            cell.etButton.layer.cornerRadius = 5.0
+            cell.bestFriendButton.clipsToBounds = true
+            cell.spButton.clipsToBounds = true
+            cell.etButton.clipsToBounds = true
             
             cell.layer.cornerRadius = 15.0
             cell.clipsToBounds = true
             
-        }else{
+            return cell
+        } else {
             // Keywords
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "keywordsCell", for: indexPath) as! HomePageTableViewCell
@@ -171,8 +182,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell.clipsToBounds = true
 
             cell.wordCloudImageView.image = UIImage(cgImage: canvas.currentImage)
+            return cell
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

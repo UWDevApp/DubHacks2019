@@ -170,6 +170,6 @@ extension Firebase {
         return diariesRef
             .whereField("saveDate", isLessThanOrEqualTo: Timestamp(date: endDate))
             .whereField("saveDate", isGreaterThanOrEqualTo: Timestamp(date: startDate))
-            .order(by: "saveDate", descending: true)
+            .order(by: "saveDate")
     }
 }

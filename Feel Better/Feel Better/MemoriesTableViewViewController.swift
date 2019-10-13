@@ -7,19 +7,20 @@
 //
 
 import UIKit
-import LocalAuthentication
+//import LocalAuthentication
 
 class MemoriesTableViewController: UITableViewController {
     
-	@IBOutlet var Memories_TableView: UITableView!
-	@IBOutlet weak var Add_Memory_Button: UIBarButtonItem!
+	@IBOutlet var memoriesTableView: UITableView!
+	@IBOutlet weak var addMemoryButton: UIBarButtonItem!
 	
-	let haptic_notification = UINotificationFeedbackGenerator()
-	var Alert = UIAlertController()
+	let hapticNotification = UINotificationFeedbackGenerator()
+	var alert = UIAlertController()
+	let dateFormatter = DateFormatter()
 	
-	var memories_tableview_array: [Memory] = []
+	var memoriesTableViewArray: [Memory] = []
 	
-	//MARK: Alert controller template
+	//MARK: alert controller template
     func showAlertController(_ message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -32,94 +33,169 @@ class MemoriesTableViewController: UITableViewController {
         // Adding editing button to the top left
 		navigationItem.leftBarButtonItem = editButtonItem
 		
+		// Configure dateFormatter
+		dateFormatter.locale = Locale(identifier: "en_US")
+		dateFormatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd HH:mm:ss")
+		
 		// Add blur effect to tableview before ID is used to unlock
 		let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-	   visualEffectView.frame = Memories_TableView.bounds
+	   visualEffectView.frame = memoriesTableView.bounds
 	   visualEffectView.tag = 1
-	   Memories_TableView.addSubview(visualEffectView)
+	   memoriesTableView.addSubview(visualEffectView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
 		// Deselects the selected cell when returning
         if let indexPath = tableView.indexPathForSelectedRow {
         tableView.deselectRow(at: indexPath, animated: true)}
-        
-        // Authentication
-        if memories_authenticate == true {
-			Memories_TableView.isUserInteractionEnabled = false
-			self.Add_Memory_Button.isEnabled = false
-			self.view.subviews.filter({$0.tag == 1}).forEach({$0.isHidden = false})
-			authentication()
-        
-		}
 	}
-	
-    override func viewDidAppear(_ animated: Bool) {
-		//MARK:  Confirmation message and taptic for saving new event
-        if saved_memory_success == true{
-        //self.showAlertController("Memory Saved")
-        self.Alert = UIAlertController(title: nil, message: "Memory Saved", preferredStyle: .alert)
-        self.present(self.Alert, animated: true, completion: nil)
-        haptic_notification.notificationOccurred(.success)
-        saved_memory_success = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
-        self.dismiss(animated: true, completion: nil)}
-        }
-    }
     
     //MARK: Local Authentication
-	func authentication(){
-		let context = LAContext()
-		var error: NSError?
-		
-		// check if ID is available
-		if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-			let reason = "Authenticate to Access Memories"
-			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason ) { success, error in
-				if success {
-					// Move to the main thread because a state update triggers UI changes.
-					DispatchQueue.main.async { [unowned self] in
-						self.Memories_TableView.isUserInteractionEnabled = true
-						self.Add_Memory_Button.isEnabled = true
-						self.view.subviews.filter({$0.tag == 1}).forEach({$0.isHidden = true})
-					}
-				} else {
-					let reason = "Authenticate to Access Memories using password"
-						context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
+//	func authentication(){
+//		let context = LAContext()
+//		var error: NSError?
+//
+//		// check if ID is available
+//		if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+//			let reason = "Authenticate to Access Memories"
+//			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason ) { success, error in
+//				if success {
+//					// Move to the main thread because a state update triggers UI changes.
+//					self.showAlertController("Welcome!")
+//				} else {
+//					let reason = "Authenticate to Access Memories using password"
+//						context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
+//
+//						if success {
+//						// Move to the main thread because a state update triggers UI changes.
+//							self.showAlertController("Welcome!")
+//						} else {
+//							self.showAlertController("Authentication Failed")
+//						}
+//					}
+//				}
+//			}
+//		} else {
+//			let reason = "Authenticate to Access Memories using password"
+//			context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
+//
+//				if success {
+//					self.showAlertController("Welcome!")
+//				} else {
+//					self.showAlertController("Authentication Failed")
+//				}
+//			}
+//		}
+//	}
+	
+	//MARK: Tableview Data Sources
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		   // #warning Incomplete implementation, return the number of sections
+		   return 1
+	}
+	   
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	   // #warning Incomplete implementation, return the number of rows
+	   return memoriesTableViewArray.count
+	}
 
-						if success {
-						// Move to the main thread because a state update triggers UI changes.
-							DispatchQueue.main.async { [unowned self] in
-								self.Memories_TableView.isUserInteractionEnabled = true
-								self.Add_Memory_Button.isEnabled = true
-								self.view.subviews.filter({$0.tag == 1}).forEach({$0.isHidden = true})
-								}
-						} else {
-							self.showAlertController("Authentication Failed")
-						}
-					}
-				}
-			}
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+		let cellIdentifier = "MemoryTableViewCell"
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MemoryTableViewCell else {
+			fatalError("The cell is not an instance of the ViewCell class")
+		}
+		let memory = memoriesTableViewArray[indexPath.row]
+
+		//MARK: Configure MemoryTableViewCell
+		cell.memoryCellTitle.text = memory.title
+		if memory.image != nil {
+			cell.memoryCellUIImage.image = memory.image
 		} else {
-			let reason = "Authenticate to Access Memories using password"
-			context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
-
-				if success {
-				// Move to the main thread because a state update triggers UI changes.
-				DispatchQueue.main.async { [unowned self] in
-					self.Memories_TableView.isUserInteractionEnabled = true
-					self.Add_Memory_Button.isEnabled = true
-					self.view.subviews.filter({$0.tag == 1}).forEach({$0.isHidden = true})
-					}
-				} else {
-					self.showAlertController("Authentication Failed")
-				}
-			}
+			cell.memoryCellUIImage.isHidden = true
+		}
+        cell.memoryCellEmoji.text = memory.sentimentEmoji
+        cell.memoryCellDateString.text = dateFormatter.string(from: memory.saveDate)
+		return cell
+	}
+		
+	//MARK: Deleting Memories
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+			if editingStyle == .delete {
+				memoriesTableViewArray.remove(at: indexPath.row)
+				tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 	}
 	
-	//MARK: Tableview Data Sources
+	//MARK: Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		 super.prepare(for: segue, sender: sender)
+		 switch(segue.identifier ?? "") {
+			 case "AddNewItem":
+				 return
+			 case "ShowEventDetail":
+				 guard let eventDetailsViewController = segue.destination as?
+					 EventDetailsViewController else {
+						 fatalError("Unexpeceted Destination: \(segue.destination)")
+				 }
+				 guard let selectedeventcell = sender as? MemoryTableViewCell else {
+					 fatalError("Unexpected sender: \(String(describing: sender))")
+				 }
+				 guard let indexPath = tableView.indexPath(for: selectedeventcell) else {fatalError("The Selected Cell is not being displayed by the table")
+				 }
+				 let selectedMemory = memoriesTableViewArray[indexPath.row]
+				 eventDetailsViewController.event = selectedMemory
+				 
+				 //case "EditEvent":
+				// guard let editEventsViewController = segue.destination as?
+			   //      NewEventViewController else {
+			   //          fatalError("Unexpeceted Destination: \(segue.destination)")
+			   //  }
+			 default:
+				 fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+				 //fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+		}
+	}
 	
-	
-	
+	//MARK: saving memory
+	@IBAction func unwindToEventList(sender: UIStoryboardSegue) {
+		if let sourceViewController = sender.source as? NewEventViewController, let event_from_segue = sourceViewController.event_data_segue {
+			// Segue data is in the following format: []
+			
+			let memoryToSave = memory()
+			
+			if let selectedIndexPath = tableView.indexPathForSelectedRow {
+				memoriesTableViewArray[selectedIndexPath.row] = memoryToSave
+				tableView.reloadRows(at: [selectedIndexPath], with: .none)
+			} else {
+				//Adding a new event instead of editing it.
+				let newIndexPath = IndexPath(row: 0, section: 0)
+				do {
+					memoriesTableViewArray.insert(memoryToSave, at: 0)
+					//memoriesTableViewArray.append(memory)
+					
+					//MARK:  Confirmation message and taptic for saving new event
+					self.alert = UIAlertController(title: nil, message: "Memory Saved", preferredStyle: .alert)
+					self.present(self.alert, animated: true, completion: nil)
+					hapticNotification.notificationOccurred(.success)
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+					self.dismiss(animated: true, completion: nil)}
+				} catch let error as NSError {
+					print("Could not save. \(error), \(error.userInfo)")
+				}
+				tableView.insertRows(at: [newIndexPath], with: .automatic)
+			}
+		}
+	}
+
+// end of class
+}
+
+// MARK: extension: function to return the previous viewController
+extension UINavigationController {
+    func previousViewController() -> UIViewController?{
+        let lenght = self.viewControllers.count
+        let previousViewController: UIViewController? = lenght >= 2 ? self.viewControllers[lenght-2] : nil
+        return previousViewController
+    }
 }

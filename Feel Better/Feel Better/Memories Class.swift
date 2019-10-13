@@ -9,24 +9,27 @@
 import UIKit
 
 // The class for memeories stored as objects in local array and FireBase
-class Memory {
+struct Memory {
 	var title: String
 	var content: String
 	var sentiment: Int
-	var sentiment_emoji: String // 😄, 🙂, 😐, ☹️, 😭
-	var saved_date: Date
+	var saveDate: Date
 	var image: UIImage?
 	
-	init?(title: String, content: String, sentiment: Int, sentiment_emoji: String, saved_date: Date, image: UIImage?) {
-		self.title = title
-		self.content = content
-		self.sentiment = sentiment
-		self.sentiment_emoji = sentiment_emoji
-		self.saved_date = saved_date
-		self.image = image
+	var sentimentEmoji: String {
+		switch sentiment {
+			case ..<20:
+				return "😭"
+			case 20..<40:
+				return "☹️"
+			case 40..<60:
+				return "😐"
+			case 60..<80:
+				return "🙂"
+			case 80...:
+				return "😄"
+			default:
+				return "GG"
+		}
 	}
-	
-//	guard !title.isEmpty else {
-//		return nil
-//	}
 }

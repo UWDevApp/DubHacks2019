@@ -41,7 +41,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCH-1I-KmQ" customClass="BarChartView" customModule="Charts">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCH-1I-KmQ" customClass="ChartView" customModule="Feel_Better" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="48" width="334" height="128"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
@@ -58,6 +58,94 @@
                                         <connections>
                                             <outlet property="containerView" destination="PCH-1I-KmQ" id="L3v-13-ICc"/>
                                             <outlet property="titleLabel" destination="cli-CT-9mt" id="zdh-Sm-k35"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="supportCell" rowHeight="187" id="WHa-94-e96" customClass="HomePageTableViewCell" customModule="Feel_Better" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="215" width="374" height="187"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WHa-94-e96" id="ozT-cY-au2">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="187"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJO-Ki-S5A">
+                                                    <rect key="frame" x="20" y="11" width="354" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="Ux2-zW-ECc"/>
+                                                        <constraint firstAttribute="width" constant="354" id="dQ1-Z1-6g2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bi-MY-Mxk">
+                                                    <rect key="frame" x="20" y="53" width="95" height="121"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" backgroundImage="bestFriendIcon"/>
+                                                    <connections>
+                                                        <action selector="callBestFriend:" destination="9pv-A4-QxB" eventType="touchUpInside" id="JTu-Qr-sBg"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvb-bG-QDe">
+                                                    <rect key="frame" x="129" y="53" width="225" height="57"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Emotional Therapist"/>
+                                                    <connections>
+                                                        <action selector="callET:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Eet-Wh-KfE"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRR-eM-cod">
+                                                    <rect key="frame" x="129" y="117" width="225" height="57"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Suicide Prevention"/>
+                                                    <connections>
+                                                        <action selector="callSP:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Wgd-m0-Xwz"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OJO-Ki-S5A" firstAttribute="leading" secondItem="ozT-cY-au2" secondAttribute="leadingMargin" id="HTn-kX-b2b"/>
+                                                <constraint firstItem="OJO-Ki-S5A" firstAttribute="top" secondItem="ozT-cY-au2" secondAttribute="topMargin" id="Xkm-Kd-n1F"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bestFriendButton" destination="8bi-MY-Mxk" id="46Y-Ha-G9X"/>
+                                            <outlet property="etButton" destination="gvb-bG-QDe" id="Wvl-P3-0RC"/>
+                                            <outlet property="spButton" destination="sRR-eM-cod" id="Le2-0c-6FY"/>
+                                            <outlet property="supportTitleLabel" destination="OJO-Ki-S5A" id="cUN-uJ-WDp"/>
+                                            <outlet property="titleLabel" destination="OJO-Ki-S5A" id="9lN-ul-Ecq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="keywordsCell" rowHeight="187" id="7GA-wS-3jx" customClass="HomePageTableViewCell" customModule="Feel_Better" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="402" width="374" height="187"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7GA-wS-3jx" id="n60-nN-Ng8">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="187"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thb-2R-XiF">
+                                                    <rect key="frame" x="20" y="11" width="354" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="88W-Z1-dae"/>
+                                                        <constraint firstAttribute="width" constant="354" id="Z40-T5-gV6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AtQ-4f-iYj">
+                                                    <rect key="frame" x="20" y="48" width="334" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="thb-2R-XiF" firstAttribute="top" secondItem="n60-nN-Ng8" secondAttribute="topMargin" id="U05-3W-ROA"/>
+                                                <constraint firstItem="thb-2R-XiF" firstAttribute="leading" secondItem="n60-nN-Ng8" secondAttribute="leadingMargin" id="xGj-Vv-hN4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="keywordsLabel" destination="thb-2R-XiF" id="36b-Rd-0i7"/>
+                                            <outlet property="titleLabel" destination="thb-2R-XiF" id="frl-TR-SlX"/>
+                                            <outlet property="wordCloudImageView" destination="AtQ-4f-iYj" id="sWW-sS-ue3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -155,6 +243,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bestFriendIcon" width="60" height="76.5"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

@@ -17,38 +17,40 @@ extension Date {
 
 class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
+    // MARK: Outlet
+    
     @IBOutlet weak var homepageTableView: UITableView!
+    
+    // MARK: Properties
     
     let titles = ["Trends","Get Support", "Keywords"]
     
     let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     var trends = [5,3,5,10,7,2,1]
     
+    let keywordDictionary = ["Lost":5,"Hello":3,"Happy":10,"Chicken":1,"Food":8,"WOW":50]
+    
+    // MARK: viewDidLoad
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
-        // tableview set up
         
         homepageTableView.delegate = self
         homepageTableView.dataSource = self
-        
         homepageTableView.showsVerticalScrollIndicator = false
         homepageTableView.separatorStyle = .none
         homepageTableView.estimatedRowHeight = 187.0
-        
         homepageTableView.allowsSelection = false
-        
-        // set background color
-        
         homepageTableView.backgroundColor = .clear
-        
         view.backgroundColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-        
         self.title = "Home"
         self.navigationController?.navigationBar.topItem?.title = "Good Morning, Kevin"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
     }
     
+    // MARK: TableView Methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -58,51 +60,69 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomePageTableViewCell
-        
-        cell.titleLabel.text = titles[indexPath.section]
-        cell.backgroundColor = .clear
-        cell.containerView.backgroundColor = .white
-        
-        // trend chart
+        // Trends
         if indexPath.section == 0{
-            cell.containerView.noDataText = "No data for trend"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomePageTableViewCell
             
-            // get last 7 weekdays labels in order (dayLabels)
-            var dayLabels = [String]()
+            cell.titleLabel.text = titles[indexPath.section]
+            cell.containerView.backgroundColor = .white
             
+            cell.layer.cornerRadius = 15.0
+            cell.clipsToBounds = true
             
-            let today = Date().dayNumberOfWeek()! // 4 = wednesday
-            for i in today..<today+7{
-                if i>7{
-                    dayLabels.append(weekdays[i-7-1])
-                }else{
-                    dayLabels.append(weekdays[i-1])
-                }
+            return cell
+            
+        }else if indexPath.section == 1{
+            // Get Support
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "supportCell", for: indexPath) as! HomePageTableViewCell
+            
+            // set appearances
+            cell.supportTitleLabel.text = "Get Support"
+            cell.bestFriendButton.setTitle("Apollo Zhu", for: .normal)
+            cell.bestFriendButton.setTitleColor(.white, for: .normal)
+            cell.spButton.backgroundColor = UIColor(red: 245.0/255.0, green: 166.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            cell.etButton.backgroundColor = UIColor(red: 245.0/255.0, green: 166.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            cell.etButton.titleLabel?.font =  UIFont(name: "SFUIDisplay-Semibold", size: 17)
+            cell.spButton.titleLabel?.font =  UIFont(name: "SFUIDisplay-Semibold", size: 17)
+            cell.spButton.setTitleColor(.white, for: .normal)
+            cell.etButton.setTitleColor(.white, for: .normal)
+            cell.bestFriendButton.titleLabel?.numberOfLines = 0
+            cell.bestFriendButton.titleLabel?.font =  UIFont(name: "SFUIDisplay-Semibold", size: 22)
+            
+            cell.layer.cornerRadius = 15.0
+            cell.clipsToBounds = true
+            
+        }else{
+            // Keywords
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "keywordsCell", for: indexPath) as! HomePageTableViewCell
+            cell.keywordsLabel.text = "Keywords"
+            
+            // set up word cloud
+
+            let canvas = Canvas(size: cell.wordCloudImageView.frame.size)
+            
+            for i in 0..<keywordDictionary.count {
+                
+                let interval = 50 / keywordDictionary.count
+                let sorted = sortedKeywords(keywordDictionary)
+                
+                let textFont: UIFont = .systemFont(ofSize: CGFloat(Int.random(in: 50-((i+1)*interval) ... 50-(i*interval))))
+                
+                canvas.add(word: .init(text: sorted[keywordDictionary.count - i - 1].key, font: textFont, color: UIColor.blue))
             }
             
-            var lineChartEntry = [ChartDataEntry]()
             
-            for i in 0..<trends.count{
-                let value = ChartDataEntry(x: Double(i), y: Double(trends[i]))
-                lineChartEntry.append(value)
-            }
-            let line1 = LineChartDataSet(entries: lineChartEntry, label: "sentiment")
-            line1.colors = [NSUIColor.blue]
+            cell.layer.cornerRadius = 15.0
+            cell.clipsToBounds = true
             
-            let data = LineChartData()
-            
-            data.addDataSet(line1)
-            
-            cell.containerView.data = data
-            
-            
+            cell.wordCloudImageView.image = UIImage(cgImage: canvas.currentImage)
+            //cell.wordCloudImageView.contentMode = .scaleAspectFill
         }
-        return cell
+        return UITableViewCell()
     }
     
-    
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 187.0
     }
@@ -116,6 +136,31 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         view.backgroundColor = .clear
         return view
     }
+    
+    // MARK: Call
+    @IBAction func callBestFriend(_ sender: Any) {
+        if let url = NSURL(string: "tel://\(5714354643)"), UIApplication.shared.canOpenURL(url as URL) {
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    @IBAction func callET(_ sender: Any) {
+        if let url = NSURL(string: "tel://\(2069139126)"), UIApplication.shared.canOpenURL(url as URL) {
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
+    @IBAction func callSP(_ sender: Any) {
+        if let url = NSURL(string: "tel://\(2067416106)"), UIApplication.shared.canOpenURL(url as URL) {
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
+    private func sortedKeywords(_ keywords: [String:Int])->[(key:String,value:Int)]{
+        return keywords.sorted(by: { $0.value < $1.value })
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -127,3 +172,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     */
 
 }
+
+
+
+
+

@@ -11,8 +11,20 @@ import Charts
 
 class HomePageTableViewCell: UITableViewCell {
     
+    // trends properties
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var containerView: BarChartView!
+    @IBOutlet weak var containerView: ChartView!
+    
+    // support properties
+    @IBOutlet weak var supportTitleLabel: UILabel!
+    @IBOutlet weak var bestFriendButton: UIButton!
+    @IBOutlet weak var etButton: UIButton!
+    @IBOutlet weak var spButton: UIButton!
+    
+    // keywords properties
+    
+    @IBOutlet weak var keywordsLabel: UILabel!
+    @IBOutlet weak var wordCloudImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

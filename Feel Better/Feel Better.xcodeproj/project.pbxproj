@@ -20,6 +20,13 @@
 		C18B324723527FE4001E4DFE /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */; };
 		C18B3252235287EB001E4DFE /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18B324E235287BA001E4DFE /* Charts.framework */; };
 		C18B3253235287EB001E4DFE /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C18B324E235287BA001E4DFE /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C18B328423529C31001E4DFE /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B328323529C31001E4DFE /* ChartView.swift */; };
+		C18B328F2352D7BE001E4DFE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B328A2352D7BE001E4DFE /* String+Extensions.swift */; };
+		C18B32902352D7BE001E4DFE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B328D2352D7BE001E4DFE /* UIColor+Extensions.swift */; };
+		C18B32912352D7BE001E4DFE /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B328E2352D7BE001E4DFE /* CGRect+Extensions.swift */; };
+		C18B329C2352D99C001E4DFE /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329B2352D99C001E4DFE /* Canvas.swift */; };
+		C18B329E2352D9C9001E4DFE /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329D2352D9C9001E4DFE /* Word.swift */; };
+		C18B32A02352D9EE001E4DFE /* WordImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329F2352D9EE001E4DFE /* WordImage.swift */; };
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB04A2352746F00C8BE8D /* SecondViewController.swift */; };
@@ -72,6 +79,13 @@
 		C18B323C23527EF9001E4DFE /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Semibold.otf"; path = "../../../../Apple Developer/SF UI/SF-UI-Display/SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
 		C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomePageTableViewCell.swift; path = "Feel Better/HomePageTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		C18B3248235287BA001E4DFE /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		C18B328323529C31001E4DFE /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		C18B328A2352D7BE001E4DFE /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		C18B328D2352D7BE001E4DFE /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		C18B328E2352D7BE001E4DFE /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
+		C18B329B2352D99C001E4DFE /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		C18B329D2352D9C9001E4DFE /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		C18B329F2352D9EE001E4DFE /* WordImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordImage.swift; sourceTree = "<group>"; };
 		D20CB0412352746F00C8BE8D /* Feel Better.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feel Better.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20CB0442352746F00C8BE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20CB0462352746F00C8BE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +140,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C18B32922352D7C5001E4DFE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C18B328E2352D7BE001E4DFE /* CGRect+Extensions.swift */,
+				C18B328D2352D7BE001E4DFE /* UIColor+Extensions.swift */,
+				C18B328A2352D7BE001E4DFE /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C18B32992352D7F3001E4DFE /* Word Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				C18B329B2352D99C001E4DFE /* Canvas.swift */,
+				C18B329D2352D9C9001E4DFE /* Word.swift */,
+				C18B329F2352D9EE001E4DFE /* WordImage.swift */,
+			);
+			path = "Word Cloud";
+			sourceTree = "<group>";
+		};
 		D20CB0382352746F00C8BE8D = {
 			isa = PBXGroup;
 			children = (
@@ -148,10 +182,13 @@
 			children = (
 				C18B323323527EE0001E4DFE /* Fonts */,
 				D20CB0442352746F00C8BE8D /* AppDelegate.swift */,
-				C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */,
 				D20CB0462352746F00C8BE8D /* SceneDelegate.swift */,
-				C18B323123527DE6001E4DFE /* HomeViewController.swift */,
 				D20CB04A2352746F00C8BE8D /* SecondViewController.swift */,
+				C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */,
+				C18B323123527DE6001E4DFE /* HomeViewController.swift */,
+				C18B328323529C31001E4DFE /* ChartView.swift */,
+				C18B32992352D7F3001E4DFE /* Word Cloud */,
+				C18B32922352D7C5001E4DFE /* Extensions */,
 				D20CB04C2352746F00C8BE8D /* Main.storyboard */,
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
 				D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */,
@@ -266,10 +303,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C18B324723527FE4001E4DFE /* HomePageTableViewCell.swift in Sources */,
+				C18B32912352D7BE001E4DFE /* CGRect+Extensions.swift in Sources */,
+				C18B328F2352D7BE001E4DFE /* String+Extensions.swift in Sources */,
 				D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */,
+				C18B329E2352D9C9001E4DFE /* Word.swift in Sources */,
+				C18B32A02352D9EE001E4DFE /* WordImage.swift in Sources */,
+				C18B32902352D7BE001E4DFE /* UIColor+Extensions.swift in Sources */,
 				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,
 				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,
 				C18B323223527DE6001E4DFE /* HomeViewController.swift in Sources */,
+				C18B328423529C31001E4DFE /* ChartView.swift in Sources */,
+				C18B329C2352D99C001E4DFE /* Canvas.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

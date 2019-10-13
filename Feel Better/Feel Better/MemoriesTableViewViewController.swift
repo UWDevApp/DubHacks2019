@@ -135,7 +135,7 @@ class MemoriesTableViewController: UITableViewController {
 				 return
 			 case "ShowEventDetail":
 				 guard let eventDetailsViewController = segue.destination as?
-					 EventDetailsViewController else {
+					 MemoryDetailsViewController else {
 						 fatalError("Unexpeceted Destination: \(segue.destination)")
 				 }
 				 guard let selectedeventcell = sender as? MemoryTableViewCell else {
@@ -159,10 +159,7 @@ class MemoriesTableViewController: UITableViewController {
 	
 	//MARK: saving memory
 	@IBAction func unwindToEventList(sender: UIStoryboardSegue) {
-		if let sourceViewController = sender.source as? NewEventViewController, let event_from_segue = sourceViewController.event_data_segue {
-			// Segue data is in the following format: []
-			
-			let memoryToSave = memory()
+		if let sourceViewController = sender.source as? NewEventViewController, let memoryToSave = sourceViewController.memoryFromSegue {
 			
 			if let selectedIndexPath = tableView.indexPathForSelectedRow {
 				memoriesTableViewArray[selectedIndexPath.row] = memoryToSave

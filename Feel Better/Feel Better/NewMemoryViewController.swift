@@ -85,18 +85,13 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		dismiss(animated: true, completion: nil)
 	}
 	
-//	private func updateSaveButtonState() {
-//		let text = newMemoryContent.text ?? ""
-//        saveMemoryBarButton.isEnabled = !text.isEmpty
-//	}
-	
 	let hapticNotification = UINotificationFeedbackGenerator()
 	var alert = UIAlertController()
 	
     var memoryToSave: LocalMemory?
 	var newMemorySentiment: Int = -5
 	
-	//MARK: UIImagePicker
+	// MARK: UIImagePicker
 	let UIImagePicker = UIImagePickerController()
 	@IBAction func UIImageTapped(_ sender: UITapGestureRecognizer) {
 		newMemoryContent.resignFirstResponder()
@@ -195,7 +190,18 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		
 		let titleToSave = newMemoryTitle.text
 		let contentToSave = newMemoryContent.text
-		let sentimentToSave = newMemorySentiment
+        if let button = sender as? UIButton,
+            let label = button.titleLabel,
+            label.font.pointSize != 65 {
+            switch button {
+            case newMemoryOverride0To20: newMemorySentiment = 10
+            case newMemoryOverride20To40: newMemorySentiment = 30
+            case newMemoryOverride40To60: newMemorySentiment = 50
+            case newMemoryOverride60To80: newMemorySentiment = 70
+            case newMemoryOverride80To100: newMemorySentiment = 90
+            default: break
+            }
+        }
 		let dateToSave = Date()
 		let defaultImageData = UIImage(named: "Tap to Select Image")?.pngData()
 		let currentImageData = newMemoryImage.image?.pngData()
@@ -206,7 +212,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 			imageToSave = newMemoryImage.image
 		}
 		
-        memoryToSave = LocalMemory(title: titleToSave ?? "", content: contentToSave ?? "", sentiment: sentimentToSave, saveDate: dateToSave, image: imageToSave)
+        memoryToSave = LocalMemory(title: titleToSave ?? "", content: contentToSave ?? "", sentiment: newMemorySentiment, saveDate: dateToSave, image: imageToSave)
 	}
 	
 	//MARK: Result / Override PopUp

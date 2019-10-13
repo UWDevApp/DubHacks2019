@@ -20,14 +20,31 @@ public class Firebase {
     private lazy var diariesRef = db.collection("diaries")
     private let storage = Storage.storage()
     private lazy var storageRef = storage.reference()
-    private let ref: DatabaseReference = Database.database().reference()
-    
+    // private let ref: DatabaseReference = Database.database().reference()
     // create record into Firebases
     // ref.child("name").childByAutoId().setValue("visual")
     // ref.child("name").childByAutoId().setValue("phanith")
     
+    func replaceMemory<T>(withID documentID: String, _ property: KeyPath<LocalMemory, T>, with newValue: T) {
+        let ref = diariesRef.document(documentID)
+        switch property._kvcKeyPathString! {
+        case "image":
+            guard let image = newValue as? UIImage else {
+                return print("ERROR: \(newValue) not an image")
+            }
+            uploadImage(image.pngData()!, for: documentID)
+        case "saveDate":
+            guard let date = newValue as? Date else {
+                return print("ERROR: \(newValue) not a date")
+            }
+            ref.setValue(Timestamp(date: date), forKey: "saveDate")
+        case let key:
+            ref.setValue(newValue, forKey: key)
+        }
+    }
+    
+    /// Add a new document in collection "diaries"
     func saveNewMemory(_ memory: LocalMemory, tags: [String]) {
-        // Add a new document in collection "diaries"
         let newMemoryRef = diariesRef.document()
         let documentID = newMemoryRef.documentID
         
@@ -35,7 +52,6 @@ public class Firebase {
             uploadImage(data, for: documentID)
         }
         
-        // var image: UIImage?
         newMemoryRef.setData([
             "title": memory.title,
             "content": memory.content,
@@ -79,8 +95,10 @@ public class Firebase {
     func uploadImage(_ data: Data, for documentID: String){
         // Create a reference to the file you want to upload
         let picsRef = storageRef.child(documentID + ".png")
-        // Upload the file to the path "images/rivers.jpg"
-        picsRef.putData(data, metadata: nil)
+        picsRef.delete { _ in
+            // Upload the file to the path "images/rivers.jpg"
+            picsRef.putData(data, metadata: nil)
+        }
     }
     
     func getImage(for documentID: String, then process: @escaping (Result<URL, Error>) -> Void) {
@@ -92,11 +110,5 @@ public class Firebase {
                 process(.failure(error!))
             }
         }
-    }
-}
-
-extension Array {
-    func toFirebaseDictionary() -> [Int: Element] {
-        return Dictionary<Int, Element>(uniqueKeysWithValues: zip(indices, self))
     }
 }

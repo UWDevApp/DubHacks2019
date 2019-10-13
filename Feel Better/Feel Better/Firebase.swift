@@ -118,3 +118,52 @@ public class Firebase {
         }
     }
 }
+
+// MARK: - Batch Request
+
+extension Firebase {
+    public func fetchAll(then process: @escaping (Result<[String], Error>) -> Void) {
+        diariesRef.order(by: "saveDate", descending: true).getDocuments { (snapshot, error) in
+            if let collection = snapshot {
+                process(.success(collection.documents.map { $0.documentID }))
+            } else {
+                process(.failure(error!))
+            }
+        }
+    }
+    
+    public func keywords(between startDate: Date, and endDate: Date,
+                         then process: @escaping (Result<[String: Int], Error>) -> Void) {
+        filtered(between: startDate, and: endDate).getDocuments { (snapshot, error) in
+            guard let collection = snapshot else {
+                return process(.failure(error!))
+            }
+            var dictionary = [String: Int]()
+            for document in collection.documents {
+                if let tags = document.get("tags") as? [String] {
+                    for tag in tags {
+                        dictionary[tag] = dictionary[tag, default: 0] + 1
+                    }
+                }
+            }
+            process(.success(dictionary))
+        }
+    }
+    
+    public func sentiments(between startDate: Date, and endDate: Date,
+                           then process: @escaping (Result<[Int], Error>) -> Void) {
+        filtered(between: startDate, and: endDate).getDocuments { (snapshot, error) in
+            guard let collection = snapshot else {
+                return process(.failure(error!))
+            }
+            process(.success(collection.documents.compactMap { $0.get("sentiment") as? Int }))
+        }
+    }
+    
+    private func filtered(between startDate: Date, and endDate: Date) -> Query {
+        return diariesRef
+            .whereField("saveDate", isLessThanOrEqualTo: Timestamp(date: endDate))
+            .whereField("saveDate", isGreaterThanOrEqualTo: Timestamp(date: startDate))
+            .order(by: "saveDate", descending: true)
+    }
+}

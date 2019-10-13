@@ -39,6 +39,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if Auth.auth().currentUser != nil {
             print("has user")
             print(Auth.auth().currentUser!.email)
+            // AppDelegate.populateFakeData()
         } else {
             print("doesn't have user")
             self.performSegue(withIdentifier: "SignPage", sender: self)

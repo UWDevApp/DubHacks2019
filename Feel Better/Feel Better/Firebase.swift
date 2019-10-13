@@ -54,7 +54,7 @@ public class Firebase {
         diariesRef.document(documentID).setData([
             "title": memory.title,
             "content": memory.content,
-            "sentiments": memory.sentiment,
+            "sentiment": memory.sentiment,
             "saveDate": Timestamp(date: memory.saveDate),
             "tags": tags
         ]) { err in

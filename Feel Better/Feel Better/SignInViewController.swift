@@ -38,6 +38,9 @@ class SignInViewController: UIViewController {
         passwordField.layer.borderWidth = 1.0
         confirmPassword.layer.borderColor = UIColor.blue.cgColor
         confirmPassword.layer.borderWidth = 1.0
+        
+        passwordField.isSecureTextEntry = true
+        confirmPassword.isSecureTextEntry = true
     
     }
     
@@ -50,6 +53,13 @@ class SignInViewController: UIViewController {
         
         nameField.placeholder = "Email"
         emailField.placeholder = "Password"
+        
+        emailField.isSecureTextEntry = true
+        
+        nameField.text = ""
+        emailField.text = ""
+        
+        signButton.setTitle("Sign In", for: .normal)
     }
     
     @IBAction func selectSignUp(_ sender: Any) {
@@ -59,8 +69,19 @@ class SignInViewController: UIViewController {
         confirmPassword.isHidden = false
         passwordField.isHidden = false
         
+        passwordField.isSecureTextEntry = true
+        confirmPassword.isSecureTextEntry = true
+        
+        nameField.text = ""
+        emailField.text = ""
+        passwordField.text = ""
+        confirmPassword.text = ""
+        
         nameField.placeholder = "First Name Last Name"
         emailField.placeholder = "Email"
+        
+        signButton.setTitle("Create Account", for: .normal)
+        
     }
     
     
@@ -70,10 +91,14 @@ class SignInViewController: UIViewController {
             
             if !nameField.text!.isEmpty && !emailField.text!.isEmpty{
                 Auth.auth().signIn(withEmail: nameField.text!, password: emailField.text!) { [weak self] user, error in
-                  guard let strongSelf = self else { return }
-                  print("error \(error)")
+                    guard self != nil else { return }
+                    print("error \(error!)")
                 }
             }
+            
+            dismiss(animated: true, completion: nil)
+            //self.performSegue(withIdentifier: "unwindToHome", sender: self)
+            
             
             
         }else{
@@ -81,10 +106,14 @@ class SignInViewController: UIViewController {
                 if passwordField.text == confirmPassword.text{
                     print("yay")
                     Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
-                      print("error \(error)")
+                      print("error \(error!)")
                     }
                 }
             }
+            dismiss(animated: true, completion: nil)
+            
+                //self.performSegue(withIdentifier: "unwindToHome", sender: self)
+            
             
         }
         

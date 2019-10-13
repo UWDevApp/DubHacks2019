@@ -41,6 +41,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             print(Auth.auth().currentUser?.email)
         } else {
           print("doesn't have user")
+            self.performSegue(withIdentifier: "SignPage", sender: self)
         }
     }
     
@@ -61,6 +62,12 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.navigationController?.navigationBar.topItem?.title = "Good Morning, Kevin"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
         
     }
     
@@ -175,15 +182,10 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
 

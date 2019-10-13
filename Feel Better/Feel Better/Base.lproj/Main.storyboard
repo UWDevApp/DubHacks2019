@@ -407,6 +407,7 @@
                                 <connections>
                                     <outlet property="memoryCellDateString" destination="6vl-eZ-Jxr" id="I9t-XP-UVX"/>
                                     <outlet property="memoryCellEmoji" destination="Ohd-2V-Zel" id="56g-ne-NJX"/>
+                                    <outlet property="memoryCellText" destination="VsF-IK-XJu" id="Ez1-4m-27Z"/>
                                     <outlet property="memoryCellTitle" destination="aKL-8s-fbg" id="f36-MP-1a9"/>
                                     <outlet property="memoryCellUIImage" destination="kmk-fK-OPy" id="Gqz-Au-ks2"/>
                                     <segue destination="l1Q-Wg-z0b" kind="show" identifier="ShowMemoryDetail" id="DBJ-L1-v4Y"/>

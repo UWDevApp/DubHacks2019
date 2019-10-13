@@ -28,6 +28,10 @@ public class Firebase {
     // ref.child("name").childByAutoId().setValue("visual")
     // ref.child("name").childByAutoId().setValue("phanith")
     
+    func deleteMemory(withID documentID: String) {
+        diariesRef.document(documentID).delete()
+    }
+    
     func replaceMemory<T>(withID documentID: String, _ property: KeyPath<LocalMemory, T>, with newValue: T) {
         let ref = diariesRef.document(documentID)
         switch property._kvcKeyPathString! {
@@ -67,10 +71,11 @@ public class Firebase {
     }
     
     /// Add a new document in collection "diaries"
-    func saveNewMemory(_ memory: LocalMemory, tags: [String]) {
+    func saveNewMemory(_ memory: LocalMemory, tags: [String]) -> String {
         let newMemoryRef = diariesRef.document()
         let documentID = newMemoryRef.documentID
         replaceMemory(withID: documentID, with: memory, tags: tags)
+        return documentID
     }
     
     func getMemory(withID documentID: String, then process: @escaping (Result<CloudMemory, Error>) -> Void) {

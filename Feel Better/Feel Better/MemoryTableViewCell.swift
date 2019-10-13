@@ -7,22 +7,37 @@
 //
 
 import UIKit
+import Kingfisher
+
+// Configure dateFormatter
+fileprivate let formatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "en_US")
+    dateFormatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd HH:mm:ss")
+    return dateFormatter
+}()
 
 class MemoryTableViewCell: UITableViewCell {
-
-	@IBOutlet weak var memoryCellTitle: UILabel!
-	@IBOutlet weak var memoryCellEmoji: UILabel!
-	@IBOutlet weak var memoryCellDateString: UILabel!
-	@IBOutlet weak var memoryCellUIImage: UIImageView!
-    @IBOutlet weak var bodyTextView: UITextView!
+    @IBOutlet private weak var memoryCellTitle: UILabel!
+    @IBOutlet private weak var memoryCellText: UILabel!
+    @IBOutlet private weak var memoryCellEmoji: UILabel!
+    @IBOutlet private weak var memoryCellDateString: UILabel!
+    @IBOutlet private weak var memoryCellUIImage: UIImageView!
     
-	override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+    public func setMemory(_ memory: MemoryType) {
+        memoryCellTitle.text = memory.title
+        memoryCellEmoji.text = memory.sentimentEmoji
+        memoryCellText.text = memory.content
+        memoryCellDateString.text = formatter.string(from: memory.saveDate)
+        switch memory {
+        case let local as LocalMemory:
+            memoryCellUIImage.isHidden = local.image == nil
+            memoryCellUIImage.image = local.image
+        case let cloud as CloudMemory:
+            memoryCellUIImage.isHidden = memoryCellUIImage == nil
+            memoryCellUIImage.kf.setImage(with: cloud.imageURL)
+        default:
+            fatalError("what memory?")
+        }
     }
 }

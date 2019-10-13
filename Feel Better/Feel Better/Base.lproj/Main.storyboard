@@ -200,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6dK-UP-vZc">
-                                <rect key="frame" x="158" y="126" width="98.000000000000014" height="93"/>
+                                <rect key="frame" x="158" y="126" width="98" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="0IB-rc-AdY"/>
                                     <constraint firstAttribute="height" constant="93" id="XCG-xk-wIq"/>
@@ -441,6 +441,68 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upS-6e-o5s" userLabel="Image Suggestion Pop Up View">
+                                        <rect key="frame" x="0.0" y="522" width="414" height="316"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="System Suggests These Images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-Zn-Bii">
+                                                <rect key="frame" x="8" y="8" width="398" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O9w-iE-bJW" userLabel="Suggested Image 1">
+                                                <rect key="frame" x="8" y="54" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="s1p-6u-6Kj" appends="YES" id="qOz-ZY-n0R"/>
+                                                </connections>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UD8-fK-SqK" userLabel="Suggested Image 2">
+                                                <rect key="frame" x="155" y="54" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="S53-Qx-nAw" appends="YES" id="Fve-mM-lC1"/>
+                                                </connections>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cw-B1-EMj" userLabel="Suggested Image 3">
+                                                <rect key="frame" x="306" y="54" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="8Bc-Iy-mqk" appends="YES" id="aX2-qa-ofW"/>
+                                                </connections>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VuD-C8-Gn8" userLabel="Suggested Image 4">
+                                                <rect key="frame" x="8" y="162" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="cBX-cw-X5K" appends="YES" id="7m8-Sc-JOw"/>
+                                                </connections>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Jk-Iz-HVo" userLabel="Suggested Image 5">
+                                                <rect key="frame" x="157" y="162" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="jlv-tQ-Du5" appends="YES" id="V6E-uN-hDj"/>
+                                                </connections>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bE7-jz-PMA" userLabel="Suggested Image 6">
+                                                <rect key="frame" x="306" y="162" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="mEb-k3-zCR" appends="YES" id="6s5-Ce-yDa"/>
+                                                </connections>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -545,6 +607,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="baseView" destination="A23-vV-e81" id="HVl-5L-yLR"/>
+                        <outlet property="imageSuggestion1" destination="O9w-iE-bJW" id="h2M-2g-T90"/>
+                        <outlet property="imageSuggestion2" destination="UD8-fK-SqK" id="Qsf-ZR-4fr"/>
+                        <outlet property="imageSuggestion3" destination="0cw-B1-EMj" id="29h-l4-ehc"/>
+                        <outlet property="imageSuggestion4" destination="VuD-C8-Gn8" id="wvm-ux-SSZ"/>
+                        <outlet property="imageSuggestion5" destination="6Jk-Iz-HVo" id="5H1-uz-fYy"/>
+                        <outlet property="imageSuggestion6" destination="bE7-jz-PMA" id="XPh-wz-wNc"/>
+                        <outlet property="imageSuggestionView" destination="upS-6e-o5s" id="ozR-1D-eYn"/>
                         <outlet property="newMemoryContent" destination="ozQ-JJ-AYT" id="xha-UM-OKl"/>
                         <outlet property="newMemoryImage" destination="tbE-Je-rp1" id="Mu6-T3-LoH"/>
                         <outlet property="newMemoryOverride0To20" destination="XJu-kR-3Sy" id="gAv-Fa-duu"/>
@@ -564,8 +633,38 @@
                         <action selector="UIImageTapped:" destination="ddc-n0-wXb" id="eZb-10-69D"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="s1p-6u-6Kj" userLabel="Suggestion1">
+                    <connections>
+                        <action selector="suggestion1Tapped:" destination="ddc-n0-wXb" id="X4F-53-zMS"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="S53-Qx-nAw" userLabel="Suggestion 2">
+                    <connections>
+                        <action selector="suggestion2Tapped:" destination="ddc-n0-wXb" id="Ubh-l7-uGD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="8Bc-Iy-mqk" userLabel="Suggestion 3">
+                    <connections>
+                        <action selector="suggestion3Tapped:" destination="ddc-n0-wXb" id="BiF-at-Igk"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="cBX-cw-X5K" userLabel="Sugestion 4">
+                    <connections>
+                        <action selector="suggestion4Tapped:" destination="ddc-n0-wXb" id="fIX-JU-2qj"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="jlv-tQ-Du5" userLabel="Suggestion 5">
+                    <connections>
+                        <action selector="suggestion5Tapped:" destination="ddc-n0-wXb" id="75z-px-NEt"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="mEb-k3-zCR" userLabel="Suggestion 6">
+                    <connections>
+                        <action selector="suggestion6Tapped:" destination="ddc-n0-wXb" id="0MK-30-arW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3634.7826086956525" y="494.86607142857139"/>
+            <point key="canvasLocation" x="3028" y="499"/>
         </scene>
         <!--Memory Details-->
         <scene sceneID="r2n-qS-AZP">

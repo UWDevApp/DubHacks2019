@@ -24,8 +24,36 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	@IBOutlet weak var newMemoryOverride20To40: UIButton!
 	@IBOutlet weak var newMemoryOverride0To20: UIButton!
 	
+	// Image Suggestion Pop Up View and Elements
+	@IBOutlet weak var imageSuggestionView: UIView!
+	@IBOutlet weak var imageSuggestion1: UIImageView!
+	@IBOutlet weak var imageSuggestion2: UIImageView!
+	@IBOutlet weak var imageSuggestion3: UIImageView!
+	@IBOutlet weak var imageSuggestion4: UIImageView!
+	@IBOutlet weak var imageSuggestion5: UIImageView!
+	@IBOutlet weak var imageSuggestion6: UIImageView!
+	
 	@IBOutlet weak var saveMemoryBarButton: UIBarButtonItem!
 	@IBAction func bringUpSavePopUpView(_ sender: UIBarButtonItem) {
+		// Azure sentiment API and returning sentiments and displaying accordingly
+		TextAnalzyer.analyzeSentiment(of: newMemoryContent.text) {
+		 (result) in
+		 self.newMemorySentiment = try! result.get().score
+		 }
+		 switch newMemorySentiment {
+			case 0..<20:
+				newMemoryOverride0To20.titleLabel?.font = .systemFont(ofSize: 65)
+			case 20..<40:
+				newMemoryOverride20To40.titleLabel?.font = .systemFont(ofSize: 65)
+			case 40..<60:
+				newMemoryOverride40To60.titleLabel?.font = .systemFont(ofSize: 65)
+			case 60..<80:
+				newMemoryOverride60To80.titleLabel?.font = .systemFont(ofSize: 65)
+			case 80..<100:
+				newMemoryOverride80To100.titleLabel?.font = .systemFont(ofSize: 65)
+			default: ()
+		}
+		
 		newMemorySavePopUpView.setIsHidden(false, animated: true)
 		let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         visualEffectView.frame = baseView.bounds
@@ -95,6 +123,8 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		// rounded corner for pop up view
 		newMemorySavePopUpView.layer.cornerRadius = 10;
 		newMemorySavePopUpView.layer.masksToBounds = true;
+		
+		imageSuggestionView.isHidden = true
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -119,7 +149,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
         navigationItem.title = textField.text
     }
     
-    //MARK: Placeholder text behaviour for newMemoryContent, auto Text Analytics API calling is also done through textViewDidBeginEdiitng and textViewDidEndEditing
+    //MARK: Placeholder text behaviour for newMemoryContent, auto image suggestion API calling is also done through textViewDidBeginEdiitng and textViewDidEndEditing
 	func textViewDidBeginEditing(_ textView: UITextView){
 		if textView.text == "I feel......"{
 			textView.text = ""
@@ -138,6 +168,10 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		if textView.text == ""{
 			textView.text = "I feel......"
 		}
+		// calls auto image suggestion
+		let currentDate = Date()
+		let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)!
+		ImageSuggestionProvider.provider.relevantImage(between: yesterday, and: currentDate, for: newMemoryContent.text, then: processImageSuggestions(suggestions:))
 	}
 	
 	//MARK: Seugue to tableview with created memory to save
@@ -187,6 +221,44 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 		newMemorySentiment = 10
 		//performSegue(withIdentifier: "unwindToMemories", sender: nil)
 	}
+	
+	//MARK: applies the array of images returned from releventImages to display on the UI and prompt the user to select one or cancel
+	private func processImageSuggestions(suggestions: [ImageSuggestionProvider.ImageSuggestion]) {
+		let images: [UIImage] = suggestions.prefix(6).map { $0.0 }
+		imageSuggestion1.image = images[0]
+		imageSuggestion2.image = images[1]
+		imageSuggestion3.image = images[2]
+		imageSuggestion4.image = images[3]
+		imageSuggestion5.image = images[4]
+		imageSuggestion6.image = images[5]
+		imageSuggestionView.isHidden = false
+	}
+	
+	@IBAction func suggestion1Tapped(_ sender: UITapGestureRecognizer) {
+		newMemoryImage.image = imageSuggestion1.image
+		imageSuggestionView.isHidden = true
+	}
+	@IBAction func suggestion2Tapped(_ sender: UITapGestureRecognizer) {
+		newMemoryImage.image = imageSuggestion2.image
+		imageSuggestionView.isHidden = true
+	}
+	@IBAction func suggestion3Tapped(_ sender: UITapGestureRecognizer) {
+		newMemoryImage.image = imageSuggestion3.image
+		imageSuggestionView.isHidden = true
+	}
+	@IBAction func suggestion4Tapped(_ sender: UITapGestureRecognizer) {
+		newMemoryImage.image = imageSuggestion4.image
+		imageSuggestionView.isHidden = true
+	}
+	@IBAction func suggestion5Tapped(_ sender: UITapGestureRecognizer) {
+		newMemoryImage.image = imageSuggestion5.image
+		imageSuggestionView.isHidden = true
+	}
+	@IBAction func suggestion6Tapped(_ sender: UITapGestureRecognizer) {
+		newMemoryImage.image = imageSuggestion6.image
+		imageSuggestionView.isHidden = true
+	}
+
 }
 
 //MARK: extension to UIView to animate isHidden

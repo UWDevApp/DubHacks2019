@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KgH-Uh-EO7">
-                                <rect key="frame" x="20" y="44" width="374" height="769"/>
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="187" id="Ysc-Zc-j1D" customClass="HomePageTableViewCell" customModule="Feel_Better" customModuleProvider="target">
@@ -267,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="slL-BN-qP1" customClass="MemoryTableViewCell" customModule="Feel_Better" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemoryTableViewCell" rowHeight="100" id="slL-BN-qP1" customClass="MemoryTableViewCell" customModule="Feel_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="slL-BN-qP1" id="mEG-dK-K5e">
@@ -333,35 +333,19 @@
                     <navigationItem key="navigationItem" title="Memories" id="cPP-e8-DB5">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="C00-xb-ljt">
                             <connections>
-                                <segue destination="Rha-KV-Xlr" kind="show" identifier="AddNewMemory" id="WLf-W5-JnK"/>
+                                <segue destination="ddc-n0-wXb" kind="show" identifier="AddNewMemory" id="BIo-ps-sjA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addMemoryButton" destination="C00-xb-ljt" id="Qz0-Bl-Ryn"/>
                         <outlet property="memoriesTableView" destination="Fcn-bR-lMn" id="Z1R-bI-luw"/>
+                        <segue destination="asg-eT-p83" kind="unwind" identifier="unwindCancel" unwindAction="unwindCancelWithSender:" id="YRi-Nr-tlW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KR2-Xm-R8G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="asg-eT-p83" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2047.826086956522" y="498.88392857142856"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3tX-hm-vHf">
-            <objects>
-                <navigationController id="Rha-KV-Xlr" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ofH-GE-OKO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vnj-ee-g5x">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ddc-n0-wXb" kind="relationship" relationship="rootViewController" id="XF0-e8-jzc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aIZ-Aw-MT5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2820" y="495"/>
         </scene>
         <!--New Memory-->
         <scene sceneID="975-82-Sm7">
@@ -429,28 +413,45 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="😄"/>
                                                         <connections>
-                                                            <action selector="To100Override:" destination="ddc-n0-wXb" eventType="touchUpInside" id="Iqp-qO-ofY"/>
+                                                            <action selector="to100Override:" destination="ddc-n0-wXb" eventType="touchUpInside" id="uzF-xW-HMh"/>
+                                                            <segue destination="7QD-YI-mgk" kind="unwind" identifier="unwindToMemories" unwindAction="unwindToMemoriesWithSender:" id="OVY-Bx-l1c"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTL-17-eF4">
                                                         <rect key="frame" x="90" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="🙂"/>
+                                                        <connections>
+                                                            <action selector="to80Override:" destination="ddc-n0-wXb" eventType="touchUpInside" id="CGh-B7-17o"/>
+                                                            <segue destination="7QD-YI-mgk" kind="unwind" identifier="unwindToMemories" unwindAction="unwindToMemoriesWithSender:" id="0jb-rz-cfl"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5d-cv-jCa">
                                                         <rect key="frame" x="164" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="😐"/>
+                                                        <connections>
+                                                            <action selector="to60Override:" destination="ddc-n0-wXb" eventType="touchUpInside" id="vbq-xc-g4n"/>
+                                                            <segue destination="7QD-YI-mgk" kind="unwind" identifier="unwindToMemories" unwindAction="unwindToMemoriesWithSender:" id="EOX-kg-CKn"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNN-9L-hxC">
                                                         <rect key="frame" x="238" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="☹️"/>
+                                                        <connections>
+                                                            <action selector="to40Override:" destination="ddc-n0-wXb" eventType="touchUpInside" id="ShY-EG-5Fk"/>
+                                                            <segue destination="7QD-YI-mgk" kind="unwind" identifier="unwindToMemories" unwindAction="unwindToMemoriesWithSender:" id="PaY-oM-bsq"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJu-kR-3Sy">
                                                         <rect key="frame" x="312" y="0.0" width="54" height="72"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <state key="normal" title="😭"/>
+                                                        <connections>
+                                                            <action selector="to20Override:" destination="ddc-n0-wXb" eventType="touchUpInside" id="Hcb-BG-veu"/>
+                                                            <segue destination="7QD-YI-mgk" kind="unwind" identifier="unwindToMemories" unwindAction="unwindToMemoriesWithSender:" id="abt-es-Dot"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -472,6 +473,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="mo8-9B-ZNJ">
                             <connections>
                                 <action selector="cancel:" destination="ddc-n0-wXb" id="qpM-2h-7ca"/>
+                                <segue destination="7QD-YI-mgk" kind="unwind" unwindAction="unwindCancelWithSender:" id="j7s-Mg-JOb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="0fp-4U-qql">
@@ -495,6 +497,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXG-gS-EG3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7QD-YI-mgk" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="D8K-HE-6zh">
                     <connections>
                         <action selector="UIImageTapped:" destination="ddc-n0-wXb" id="eZb-10-69D"/>
@@ -621,7 +624,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmb-Lm-yaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="807" y="-579"/>
         </scene>
     </scenes>
     <resources>
@@ -631,6 +634,6 @@
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nah-Wow-Bah"/>
+        <segue reference="mVZ-Di-ciQ"/>
     </inferredMetricsTieBreakers>
 </document>

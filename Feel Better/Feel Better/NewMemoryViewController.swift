@@ -167,13 +167,26 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	//MARK: Result / Override PopUp
 	
 	
-	@IBAction func To100Override(_ sender: UIButton) {
+	@IBAction func to100Override(_ sender: UIButton) {
 		newMemorySentiment = 90
-		performSegue(withIdentifier: "AddNewMemory", sender: Any?.self)
+		//performSegue(withIdentifier: "unwindToMemories", sender: nil)
 	}
-	
-	
-	
+	@IBAction func to80Override(_ sender: UIButton) {
+		newMemorySentiment = 70
+		//performSegue(withIdentifier: "unwindToMemories", sender: nil)
+	}
+	@IBAction func to60Override(_ sender: UIButton) {
+		newMemorySentiment = 50
+		//performSegue(withIdentifier: "unwindToMemories", sender: nil)
+	}
+	@IBAction func to40Override(_ sender: UIButton) {
+		newMemorySentiment = 30
+		//performSegue(withIdentifier: "unwindToMemories", sender: nil)
+	}
+	@IBAction func to20Override(_ sender: UIButton) {
+		newMemorySentiment = 10
+		//performSegue(withIdentifier: "unwindToMemories", sender: nil)
+	}
 }
 
 //MARK: extension to UIView to animate isHidden

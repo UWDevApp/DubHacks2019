@@ -90,7 +90,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         homepageTableView.backgroundColor = .clear
         view.backgroundColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1.0)
         self.title = "Home"
-        self.navigationController?.navigationBar.topItem?.title = "Good Morning, Kevin"
+        self.navigationController?.navigationBar.topItem?.title = "Good Afternoon, Kevin"
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     

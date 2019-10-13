@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This allows you to add images in your memories</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -22,6 +20,20 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This allows you to add images in your memories</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF-UI-Display-Black.otf</string>
+		<string>SF-UI-Display-Bold.otf</string>
+		<string>SF-UI-Display-Heavy.otf</string>
+		<string>SF-UI-Display-Light.otf</string>
+		<string>SF-UI-Display-Medium.otf</string>
+		<string>SF-UI-Display-Regular.otf</string>
+		<string>SF-UI-Display-Semibold.otf</string>
+		<string>SF-UI-Display-Thin.otf</string>
+		<string>SF-UI-Display-Ultralight.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -62,8 +74,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -71,18 +81,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SF-UI-Display-Black.otf</string>
-		<string>SF-UI-Display-Bold.otf</string>
-		<string>SF-UI-Display-Heavy.otf</string>
-		<string>SF-UI-Display-Light.otf</string>
-		<string>SF-UI-Display-Medium.otf</string>
-		<string>SF-UI-Display-Regular.otf</string>
-		<string>SF-UI-Display-Semibold.otf</string>
-		<string>SF-UI-Display-Thin.otf</string>
-		<string>SF-UI-Display-Ultralight.otf</string>
 	</array>
 </dict>
 </plist>

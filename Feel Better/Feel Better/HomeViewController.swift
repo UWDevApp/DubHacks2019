@@ -34,9 +34,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var homepageTableView: UITableView!
     
     // MARK: Properties
-    
-    let titles = ["Trends","Get Support", "Keywords"]
-    
+        
     let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     var trends = [0] {
         didSet {
@@ -148,8 +146,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     private func makeTrendsCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = homepageTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             as! HomePageTableViewCell
-        
-        cell.titleLabel.text = titles[indexPath.section]
+        cell.titleLabel.text = "Trends"
         cell.containerView.backgroundColor = .white
         
         print("trends \(trends)")
@@ -167,7 +164,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell = homepageTableView.dequeueReusableCell(withIdentifier: "keywordsCell", for: indexPath)
             as! HomePageTableViewCell
         cell.keywordsLabel.text = "Keywords"
-
+        cell.titleLabel.text = "Keywords"
         // set up word cloud
 
         let canvas = Canvas(size: cell.wordCloudImageView.frame.size)
@@ -176,7 +173,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let textFont: UIFont = .systemFont(ofSize: CGFloat(Int.random(in: 9...20)))
             canvas.add(word: .init(text: Array(keywordDictionary.keys)[i], font: textFont, color: .random()))
         }
-
 
         cell.layer.cornerRadius = 15.0
         cell.clipsToBounds = true
@@ -190,6 +186,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell = homepageTableView.dequeueReusableCell(withIdentifier: "supportCell", for: indexPath)
             as! HomePageTableViewCell
         
+        cell.titleLabel.text = "Get Support"
+
         // set appearances
         cell.supportTitleLabel.text = "Get Support"
         

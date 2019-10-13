@@ -17,109 +17,104 @@ public class Firebase {
     private init() { }
     
     private let db = Firestore.firestore()
-    private lazy var diariesRef = db.collection("diaries")
-    private lazy var docRef = db.collection("diaries").document("today")
+    var diariesRef: CollectionReference {
+        let uid = Auth.auth().currentUser!.uid
+        return db.collection("users").document(uid).collection("diaries")
+    }
     private let storage = Storage.storage()
     private lazy var storageRef = storage.reference()
-    private let ref: DatabaseReference = Database.database().reference()
-    
+    // private let ref: DatabaseReference = Database.database().reference()
     // create record into Firebases
     // ref.child("name").childByAutoId().setValue("visual")
     // ref.child("name").childByAutoId().setValue("phanith")
     
-    func setDocument() {
-        // Add a new document in collection "diaries"
-        db.collection("diaries").document("today").setData([
-            "title": "Journal",
-            "content": "content",
-            "sentiments":"happy",
-            "saveDate": "10/12/19"
+    func replaceMemory<T>(withID documentID: String, _ property: KeyPath<LocalMemory, T>, with newValue: T) {
+        let ref = diariesRef.document(documentID)
+        switch property._kvcKeyPathString! {
+        case "image":
+            guard let image = newValue as? UIImage else {
+                return print("ERROR: \(newValue) not an image")
+            }
+            uploadImage(image.pngData()!, for: documentID)
+        case "saveDate":
+            guard let date = newValue as? Date else {
+                return print("ERROR: \(newValue) not a date")
+            }
+            ref.setValue(Timestamp(date: date), forKey: "saveDate")
+        case let key:
+            ref.setValue(newValue, forKey: key)
+        }
+    }
+    
+    func replaceMemory(withID documentID: String, with memory: LocalMemory, tags: [String]) {
+        if let data = memory.image?.pngData() {
+            uploadImage(data, for: documentID)
+        }
+        
+        diariesRef.document(documentID).setData([
+            "title": memory.title,
+            "content": memory.content,
+            "sentiments": memory.sentiment,
+            "saveDate": Timestamp(date: memory.saveDate),
+            "tags": tags
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
-                print("Document successfully written!")
+                print("Document \(documentID) successfully written!")
             }
         }
     }
     
-    func readData() {
-        // read the data
-        diariesRef.document("diaries").setData([
-            "title": "Jorunal",
-            "content": "content",
-            "sentiments":"happy",
-            "saveDate": "10/12/19"
-        ])
+    /// Add a new document in collection "diaries"
+    func saveNewMemory(_ memory: LocalMemory, tags: [String]) {
+        let newMemoryRef = diariesRef.document()
+        let documentID = newMemoryRef.documentID
+        replaceMemory(withID: documentID, with: memory, tags: tags)
     }
     
-    func getDoc() {
-        //get the document from designated collection
-        docRef.getDocument {(document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
+    func getMemory(withID documentID: String, then process: @escaping (Result<CloudMemory, Error>) -> Void) {
+        // get the document from designated collection
+        diariesRef.document(documentID).getDocument { [unowned self] (document, error) in
+            guard let data = document?.data() else {
                 print("Document does not exist")
-            }
-        }
-    }
-    
-    func uploadFilesFromMemory(data: Data, ErrorReporter : (String) -> Void){
-        
-        // Create a reference to the file you want to upload
-        let picsRef = storageRef.child("images/user.jpg")
-        
-        // Upload the file to the path "images/rivers.jpg"
-        _ = picsRef.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
                 return
             }
-            // Metadata contains file metadata such as size, content-type.
-            _ = metadata.size
-            
-            // You can also access to download URL after upload.
-            picsRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    // Uh-oh, an error occurred!
-                    return
-                }
+            guard let title = data["title"] as? String
+                , let content = data["content"] as? String
+                , let sentiment = data["sentiment"] as? Int
+                , let saveTimestamp = data["saveDate"] as? Timestamp
+                , let tags = data["tags"] as? [String]
+                else {
+                    return print("Wrong memory format: \(data)")
+            }
+            self.getImage(for: documentID) { (result) in
+                process(result.map {
+                    CloudMemory(documentID: documentID, title: title, content: content,
+                    sentiment: sentiment, tags: tags,
+                    saveDate: saveTimestamp.dateValue(), imageURL: $0)
+                })
             }
         }
     }
     
-    
-    func uploadFilesFromLocal(ErrorReporter : (String) -> Void) -> Void {
-        // File located on disk
-        let localFile = URL(string: "path/to/file")!
-        
+    func uploadImage(_ data: Data, for documentID: String){
         // Create a reference to the file you want to upload
-        let picsRef = storageRef.child("images/user.jpg")
-        
-        // Upload the file to the path "images/rivers.jpg"
-        _ = picsRef.putFile(from: localFile, metadata: nil) { metadata, error in
-            guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
-                return
-            }
-            // Metadata contains file metadata such as size, content-type.
-            _ = metadata.size
-            // You can also access to download URL after upload.
-            picsRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    // Uh-oh, an error occurred!
-                    
-                    return
-                    
-                }
-            }
+        let picsRef = storageRef.child(documentID + ".png")
+        picsRef.delete { _ in
+            // Upload the file to the path "images/rivers.jpg"
+            picsRef.putData(data, metadata: nil)
         }
     }
-}
-
-extension Array {
-    func toFirebaseDictionary() -> [Int: Element] {
-        return Dictionary<Int, Element>(uniqueKeysWithValues: zip(indices, self))
+    
+    func getImage(for documentID: String, then process: @escaping (Result<URL, Error>) -> Void) {
+        let picsRef = storageRef.child(documentID + ".png")
+        picsRef.downloadURL { (url, error) in
+            if let url = url {
+                process(.success(url))
+            } else {
+                process(.failure(error!))
+            }
+        }
     }
 }

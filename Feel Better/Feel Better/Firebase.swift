@@ -17,7 +17,10 @@ public class Firebase {
     private init() { }
     
     private let db = Firestore.firestore()
-    private lazy var diariesRef = db.collection("diaries")
+    var diariesRef: CollectionReference {
+        let uid = Auth.auth().currentUser!.uid
+        return db.collection("users").document(uid).collection("diaries")
+    }
     private let storage = Storage.storage()
     private lazy var storageRef = storage.reference()
     // private let ref: DatabaseReference = Database.database().reference()
@@ -43,16 +46,12 @@ public class Firebase {
         }
     }
     
-    /// Add a new document in collection "diaries"
-    func saveNewMemory(_ memory: LocalMemory, tags: [String]) {
-        let newMemoryRef = diariesRef.document()
-        let documentID = newMemoryRef.documentID
-        
+    func replaceMemory(withID documentID: String, with memory: LocalMemory, tags: [String]) {
         if let data = memory.image?.pngData() {
             uploadImage(data, for: documentID)
         }
         
-        newMemoryRef.setData([
+        diariesRef.document(documentID).setData([
             "title": memory.title,
             "content": memory.content,
             "sentiments": memory.sentiment,
@@ -65,6 +64,13 @@ public class Firebase {
                 print("Document \(documentID) successfully written!")
             }
         }
+    }
+    
+    /// Add a new document in collection "diaries"
+    func saveNewMemory(_ memory: LocalMemory, tags: [String]) {
+        let newMemoryRef = diariesRef.document()
+        let documentID = newMemoryRef.documentID
+        replaceMemory(withID: documentID, with: memory, tags: tags)
     }
     
     func getMemory(withID documentID: String, then process: @escaping (Result<CloudMemory, Error>) -> Void) {

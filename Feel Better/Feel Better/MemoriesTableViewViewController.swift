@@ -131,9 +131,9 @@ class MemoriesTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		 super.prepare(for: segue, sender: sender)
 		 switch(segue.identifier ?? "") {
-			 case "AddNewItem":
+			 case "AddNewMemory":
 				 return
-			 case "ShowEventDetail":
+			 case "ShowMemoryDetail":
 				 guard let destinationViewController = segue.destination as?
 					 MemoryDetailsViewController else {
 						 fatalError("Unexpeceted Destination: \(segue.destination)")

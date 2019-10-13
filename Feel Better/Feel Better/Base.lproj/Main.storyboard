@@ -105,7 +105,7 @@
                                     <outlet property="memoryCellEmoji" destination="Ohd-2V-Zel" id="56g-ne-NJX"/>
                                     <outlet property="memoryCellTitle" destination="aKL-8s-fbg" id="f36-MP-1a9"/>
                                     <outlet property="memoryCellUIImage" destination="kmk-fK-OPy" id="Gqz-Au-ks2"/>
-                                    <segue destination="l1Q-Wg-z0b" kind="show" id="DBJ-L1-v4Y"/>
+                                    <segue destination="l1Q-Wg-z0b" kind="show" identifier="ShowMemoryDetail" id="DBJ-L1-v4Y"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -117,13 +117,13 @@
                     <navigationItem key="navigationItem" title="Memories" id="cPP-e8-DB5">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="C00-xb-ljt">
                             <connections>
-                                <segue destination="Rha-KV-Xlr" kind="presentation" id="WLf-W5-JnK"/>
+                                <segue destination="Rha-KV-Xlr" kind="presentation" identifier="AddNewMemory" id="WLf-W5-JnK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="Add_Memory_Button" destination="C00-xb-ljt" id="CCg-Ad-cpI"/>
-                        <outlet property="Memories_TableView" destination="Fcn-bR-lMn" id="GPR-SX-jEo"/>
+                        <outlet property="addMemoryButton" destination="C00-xb-ljt" id="Qz0-Bl-Ryn"/>
+                        <outlet property="memoriesTableView" destination="Fcn-bR-lMn" id="Z1R-bI-luw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KR2-Xm-R8G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -168,7 +168,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tap to Select Image" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
                                 <rect key="frame" x="20" y="434" width="374" height="299"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -376,6 +376,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Tap to Select Image" width="361" height="293"/>
         <image name="first" width="30" height="30"/>
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>

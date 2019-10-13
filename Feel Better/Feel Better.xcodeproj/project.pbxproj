@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0E06F92352935800A916D7 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E06F82352935800A916D7 /* GoogleService-Info (1).plist */; };
+		1C0E06F92352935800A916D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E06F82352935800A916D7 /* GoogleService-Info.plist */; };
 		A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A023528B560065ECD1 /* Memories Class.swift */; };
 		A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */; };
 		A0AF33A52352B2CA0065ECD1 /* MemoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */; };
@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C0E06F82352935800A916D7 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
+		1C0E06F82352935800A916D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.debug.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.debug.xcconfig"; sourceTree = "<group>"; };
 		A0AF33A023528B560065ECD1 /* Memories Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memories Class.swift"; sourceTree = "<group>"; };
 		A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
 				D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */,
 				D20CB0542352747000C8BE8D /* Info.plist */,
-				1C0E06F82352935800A916D7 /* GoogleService-Info (1).plist */,
+				1C0E06F82352935800A916D7 /* GoogleService-Info.plist */,
 			);
 			path = "Feel Better";
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 				D20CB0532352747000C8BE8D /* LaunchScreen.storyboard in Resources */,
 				D20CB0502352747000C8BE8D /* Assets.xcassets in Resources */,
 				D20CB04E2352746F00C8BE8D /* Main.storyboard in Resources */,
-				1C0E06F92352935800A916D7 /* GoogleService-Info (1).plist in Resources */,
+				1C0E06F92352935800A916D7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

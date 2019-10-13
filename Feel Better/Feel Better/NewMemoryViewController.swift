@@ -40,6 +40,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	var alert = UIAlertController()
 	
 	var memoryToSave: Memory?
+	var newMemorySentiment: Int = 0
 	
 	//MARK: UIImagePicker
 	let UIImagePicker = UIImagePickerController()
@@ -114,6 +115,26 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	}
 	
 	//MARK: Seugue to tableview with created memory to save
-	
-	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+		guard let saveButton = sender as? UIBarButtonItem, saveButton === saveMemoryBarButton else {
+			print("Cancelling Action,  The Save Button was not pressed")
+			return
+		}
+		
+		let titleToSave = newMemoryTitle.text
+		let contentToSave = newMemoryContent.text
+		let sentimentToSave = newMemorySentiment
+		let dateToSave = Date()
+		let defaultImageData = UIImage(named: "Tap to Select Image")?.pngData()
+		let currentImageData = newMemoryImage.image?.pngData()
+		var imageToSave: UIImage?
+		if defaultImageData == currentImageData {
+			imageToSave = nil
+		} else {
+			imageToSave = newMemoryImage.image
+		}
+		
+		memoryToSave = Memory(title: titleToSave ?? "", content: contentToSave ?? "", sentiment: sentimentToSave, saveDate: dateToSave, image: imageToSave)
+	}
 }

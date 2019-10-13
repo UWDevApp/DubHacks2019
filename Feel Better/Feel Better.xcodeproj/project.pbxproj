@@ -46,6 +46,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C0E06FC23529F3000A916D7 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		5BFBAE34B11FFDF7D581CD18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +91,7 @@
 		D20CB0432352746F00C8BE8D /* Feel Better */ = {
 			isa = PBXGroup;
 			children = (
+				1C0E06FC23529F3000A916D7 /* images */,
 				D20CB0442352746F00C8BE8D /* AppDelegate.swift */,
 				D20CB0462352746F00C8BE8D /* SceneDelegate.swift */,
 				D20CB0482352746F00C8BE8D /* FirstViewController.swift */,

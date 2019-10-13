@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6dK-UP-vZc">
-                                <rect key="frame" x="158" y="126" width="98" height="93"/>
+                                <rect key="frame" x="158" y="126" width="98.000000000000014" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="0IB-rc-AdY"/>
                                     <constraint firstAttribute="height" constant="93" id="XCG-xk-wIq"/>
@@ -774,7 +774,7 @@
         <scene sceneID="VU0-8Z-UiH">
             <objects>
                 <navigationController title="Navigation Controller" id="puN-BN-96o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Asb-hQ-9Eg"/>
+                    <tabBarItem key="tabBarItem" title="Memories" image="tray.2" catalog="system" selectedImage="tray.2.fill" id="Asb-hQ-9Eg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PnO-lc-GvT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -798,7 +798,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="Wv8-j0-Kgz" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="Nah-Wow-Bah"/>
                         <segue destination="puN-BN-96o" kind="relationship" relationship="viewControllers" id="LVc-3E-oVU"/>
                     </connections>
                 </tabBarController>
@@ -806,11 +805,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Home-->
+        <!--Overview-->
         <scene sceneID="KZc-fI-ohi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wv8-j0-Kgz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Overview" image="sun.haze" catalog="system" selectedImage="sun.haze.fill" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l1s-nM-S6B">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -823,16 +822,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmb-Lm-yaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="-579"/>
+            <point key="canvasLocation" x="814" y="-320"/>
         </scene>
     </scenes>
     <resources>
         <image name="bestFriendIcon" width="60" height="76.5"/>
-        <image name="first" width="30" height="30"/>
         <image name="logo" width="53.5" height="55"/>
         <image name="plus" catalog="system" width="64" height="56"/>
+        <image name="sun.haze" catalog="system" width="64" height="58"/>
+        <image name="sun.haze.fill" catalog="system" width="64" height="58"/>
+        <image name="tray.2" catalog="system" width="64" height="56"/>
+        <image name="tray.2.fill" catalog="system" width="64" height="56"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="mVZ-Di-ciQ"/>
-    </inferredMetricsTieBreakers>
 </document>

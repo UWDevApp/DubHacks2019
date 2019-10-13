@@ -105,6 +105,7 @@
                                     <outlet property="memoryCellEmoji" destination="Ohd-2V-Zel" id="56g-ne-NJX"/>
                                     <outlet property="memoryCellTitle" destination="aKL-8s-fbg" id="f36-MP-1a9"/>
                                     <outlet property="memoryCellUIImage" destination="kmk-fK-OPy" id="Gqz-Au-ks2"/>
+                                    <segue destination="l1Q-Wg-z0b" kind="show" id="DBJ-L1-v4Y"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -125,10 +126,26 @@
             </objects>
             <point key="canvasLocation" x="2047.826086956522" y="498.88392857142856"/>
         </scene>
-        <!--Item-->
+        <!--Memory Details-->
+        <scene sceneID="r2n-qS-AZP">
+            <objects>
+                <viewController title="Memory Details" id="l1Q-Wg-z0b" customClass="MemoryDetailsViewController" customModule="Feel_Better" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3BR-e7-ttW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BP5-HG-KUz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pQV-rB-PJs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E5E-ae-zhZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2048" y="1292"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="VU0-8Z-UiH">
             <objects>
-                <navigationController id="puN-BN-96o" sceneMemberID="viewController">
+                <navigationController title="Navigation Controller" id="puN-BN-96o" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Asb-hQ-9Eg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PnO-lc-GvT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

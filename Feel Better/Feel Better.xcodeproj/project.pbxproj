@@ -41,7 +41,7 @@
 		D25E5F6F2352B0AB00C105DC /* ImageSuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6E2352B0AB00C105DC /* ImageSuggestionProvider.swift */; };
 		D25E5F722352DB0900C105DC /* ComputerVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F712352DB0900C105DC /* ComputerVision.swift */; };
 		D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27ABDD62353096A00E61709 /* ImageTagMemory.swift */; };
-		D288FB002353169200D72B86 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288FAFF2353169200D72B86 /* FirstViewController.swift */; };
+		D288FB002353169200D72B86 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288FAFF2353169200D72B86 /* Firebase.swift */; };
 		E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +85,7 @@
 		D25E5F6E2352B0AB00C105DC /* ImageSuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSuggestionProvider.swift; sourceTree = "<group>"; };
 		D25E5F712352DB0900C105DC /* ComputerVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerVision.swift; sourceTree = "<group>"; };
 		D27ABDD62353096A00E61709 /* ImageTagMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTagMemory.swift; sourceTree = "<group>"; };
-		D288FAFF2353169200D72B86 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D288FAFF2353169200D72B86 /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,13 +100,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C0E06FC23529F3000A916D7 /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
 		5BFBAE34B11FFDF7D581CD18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,11 +175,10 @@
 			isa = PBXGroup;
 			children = (
 				C18B323323527EE0001E4DFE /* Fonts */,
-				1C0E06FC23529F3000A916D7 /* images */,
 				D20CB05C235275FE00C8BE8D /* Azure */,
 				D20CB0442352746F00C8BE8D /* AppDelegate.swift */,
 				D20CB0462352746F00C8BE8D /* SceneDelegate.swift */,
-				D288FAFF2353169200D72B86 /* FirstViewController.swift */,
+				D288FAFF2353169200D72B86 /* Firebase.swift */,
 				D20CB04A2352746F00C8BE8D /* SecondViewController.swift */,
 				C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */,
 				C18B323123527DE6001E4DFE /* HomeViewController.swift */,
@@ -381,7 +373,7 @@
 				C18B328423529C31001E4DFE /* ChartView.swift in Sources */,
 				C18B329C2352D99C001E4DFE /* Canvas.swift in Sources */,
 				D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */,
-				D288FB002353169200D72B86 /* FirstViewController.swift in Sources */,
+				D288FB002353169200D72B86 /* Firebase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

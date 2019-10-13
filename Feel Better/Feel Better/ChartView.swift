@@ -109,6 +109,7 @@ import UIKit
         // add weekday labels
         
 //        for i in 0..<7{
+//            print(columnXPoint(i))
 //            let label = UILabel(frame: CGRect(x: columnXPoint(i), y: graphHeight+topBorder, width: 10, height: 10))
 //            label.font = .systemFont(ofSize: CGFloat(10))
 //            label.textColor = .blue

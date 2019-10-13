@@ -16,6 +16,9 @@
 		D20CB0502352747000C8BE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20CB04F2352747000C8BE8D /* Assets.xcassets */; };
 		D20CB0532352747000C8BE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */; };
 		D20CB05B235275F900C8BE8D /* Azure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB05A235275F900C8BE8D /* Azure.swift */; };
+		D25E5F6723529AA100C105DC /* SentimentAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */; };
+		D25E5F6923529F7200C105DC /* TextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6823529F7200C105DC /* TextAnalyzer.swift */; };
+		D25E5F6B23529FE300C105DC /* KeyPhraseExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */; };
 		E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,9 @@
 		D20CB0522352747000C8BE8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D20CB0542352747000C8BE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D20CB05A235275F900C8BE8D /* Azure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Azure.swift; sourceTree = "<group>"; };
+		D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalyzer.swift; sourceTree = "<group>"; };
+		D25E5F6823529F7200C105DC /* TextAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAnalyzer.swift; sourceTree = "<group>"; };
+		D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPhraseExtractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +109,10 @@
 		D20CB05C235275FE00C8BE8D /* Azure */ = {
 			isa = PBXGroup;
 			children = (
+				D25E5F6823529F7200C105DC /* TextAnalyzer.swift */,
 				D20CB05A235275F900C8BE8D /* Azure.swift */,
+				D25E5F6623529AA100C105DC /* SentimentAnalyzer.swift */,
+				D25E5F6A23529FE300C105DC /* KeyPhraseExtractor.swift */,
 			);
 			path = Azure;
 			sourceTree = "<group>";
@@ -227,7 +236,10 @@
 				D20CB05B235275F900C8BE8D /* Azure.swift in Sources */,
 				D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */,
 				D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */,
+				D25E5F6B23529FE300C105DC /* KeyPhraseExtractor.swift in Sources */,
+				D25E5F6723529AA100C105DC /* SentimentAnalyzer.swift in Sources */,
 				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,
+				D25E5F6923529F7200C105DC /* TextAnalyzer.swift in Sources */,
 				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

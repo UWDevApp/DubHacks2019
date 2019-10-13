@@ -628,7 +628,9 @@
         <image name="bestFriendIcon" width="60" height="76.5"/>
         <image name="first" width="30" height="30"/>
         <image name="logo" width="53.5" height="55"/>
-        <image name="second" width="30" height="30"/>
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mVZ-Di-ciQ"/>
+    </inferredMetricsTieBreakers>
 </document>

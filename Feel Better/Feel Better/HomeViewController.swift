@@ -137,22 +137,22 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return view
     }
     
-    // MARK: Call
-    @IBAction func callBestFriend(_ sender: Any) {
-        if let url = NSURL(string: "tel://\(5714354643)"), UIApplication.shared.canOpenURL(url as URL) {
-            UIApplication.shared.openURL(url as URL)
-        }
-    }
-    @IBAction func callET(_ sender: Any) {
-        if let url = NSURL(string: "tel://\(2069139126)"), UIApplication.shared.canOpenURL(url as URL) {
-            UIApplication.shared.openURL(url as URL)
+    func call(_ phoneNumber: Int) {
+        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
         }
     }
     
+    // MARK: Call
+    @IBAction func callBestFriend(_ sender: Any) {
+        call(5714354643)
+    }
+    @IBAction func callET(_ sender: Any) {
+        call(2069139126)
+    }
+    
     @IBAction func callSP(_ sender: Any) {
-        if let url = NSURL(string: "tel://\(2067416106)"), UIApplication.shared.canOpenURL(url as URL) {
-            UIApplication.shared.openURL(url as URL)
-        }
+        call(2067416106)
     }
     
     private func sortedKeywords(_ keywords: [String:Int])->[(key:String,value:Int)]{

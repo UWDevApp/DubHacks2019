@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0E06F92352935800A916D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E06F82352935800A916D7 /* GoogleService-Info.plist */; };
 		C18B323223527DE6001E4DFE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B323123527DE6001E4DFE /* HomeViewController.swift */; };
 		C18B323D23527EF9001E4DFE /* SF-UI-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C18B323423527EF9001E4DFE /* SF-UI-Display-Medium.otf */; };
 		C18B323E23527EF9001E4DFE /* SF-UI-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C18B323523527EF9001E4DFE /* SF-UI-Display-Light.otf */; };
@@ -18,8 +19,6 @@
 		C18B324423527EF9001E4DFE /* SF-UI-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C18B323B23527EF9001E4DFE /* SF-UI-Display-Ultralight.otf */; };
 		C18B324523527EF9001E4DFE /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C18B323C23527EF9001E4DFE /* SF-UI-Display-Semibold.otf */; };
 		C18B324723527FE4001E4DFE /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */; };
-		C18B3252235287EB001E4DFE /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18B324E235287BA001E4DFE /* Charts.framework */; };
-		C18B3253235287EB001E4DFE /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C18B324E235287BA001E4DFE /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C18B328423529C31001E4DFE /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B328323529C31001E4DFE /* ChartView.swift */; };
 		C18B328F2352D7BE001E4DFE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B328A2352D7BE001E4DFE /* String+Extensions.swift */; };
 		C18B32902352D7BE001E4DFE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B328D2352D7BE001E4DFE /* UIColor+Extensions.swift */; };
@@ -28,7 +27,6 @@
 		C18B329E2352D9C9001E4DFE /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329D2352D9C9001E4DFE /* Word.swift */; };
 		C18B32A02352D9EE001E4DFE /* WordImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329F2352D9EE001E4DFE /* WordImage.swift */; };
 		C18B32A223530C13001E4DFE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B32A123530C13001E4DFE /* SignInViewController.swift */; };
-		1C0E06F92352935800A916D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E06F82352935800A916D7 /* GoogleService-Info.plist */; };
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB04A2352746F00C8BE8D /* SecondViewController.swift */; };
@@ -43,43 +41,17 @@
 		D25E5F6F2352B0AB00C105DC /* ImageSuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F6E2352B0AB00C105DC /* ImageSuggestionProvider.swift */; };
 		D25E5F722352DB0900C105DC /* ComputerVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E5F712352DB0900C105DC /* ComputerVision.swift */; };
 		D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27ABDD62353096A00E61709 /* ImageTagMemory.swift */; };
+		D288FB002353169200D72B86 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288FAFF2353169200D72B86 /* FirstViewController.swift */; };
 		E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C18B324D235287BA001E4DFE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C18B3248235287BA001E4DFE /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
-			remoteInfo = Charts;
-		};
-		C18B324F235287BA001E4DFE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C18B3248235287BA001E4DFE /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C18B3254235287EB001E4DFE /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C18B3253235287EB001E4DFE /* Charts.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		1C0E06F82352935800A916D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.debug.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.debug.xcconfig"; sourceTree = "<group>"; };
+		B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feel_Better.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C15896BFDF0C32AA62D5DAE5 /* Pods-Feel Better.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.release.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.release.xcconfig"; sourceTree = "<group>"; };
 		C18B323123527DE6001E4DFE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C18B323423527EF9001E4DFE /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Medium.otf"; path = "../../../../Apple Developer/SF UI/SF-UI-Display/SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
+		C18B323423527EF9001E4DFE /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Medium.otf"; path = "..//SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
 		C18B323523527EF9001E4DFE /* SF-UI-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Light.otf"; path = "../../../../Apple Developer/SF UI/SF-UI-Display/SF-UI-Display-Light.otf"; sourceTree = "<group>"; };
 		C18B323623527EF9001E4DFE /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Regular.otf"; path = "../../../../Apple Developer/SF UI/SF-UI-Display/SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
 		C18B323723527EF9001E4DFE /* SF-UI-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Thin.otf"; path = "../../../../Apple Developer/SF UI/SF-UI-Display/SF-UI-Display-Thin.otf"; sourceTree = "<group>"; };
@@ -89,7 +61,6 @@
 		C18B323B23527EF9001E4DFE /* SF-UI-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Ultralight.otf"; path = "../../../../Apple Developer/SF UI/SF-UI-Display/SF-UI-Display-Ultralight.otf"; sourceTree = "<group>"; };
 		C18B323C23527EF9001E4DFE /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-UI-Display-Semibold.otf"; path = "../../../../Apple Developer/SF UI/SF-UI-Display/SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
 		C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomePageTableViewCell.swift; path = "Feel Better/HomePageTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
-		C18B3248235287BA001E4DFE /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		C18B328323529C31001E4DFE /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		C18B328A2352D7BE001E4DFE /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C18B328D2352D7BE001E4DFE /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -98,10 +69,6 @@
 		C18B329D2352D9C9001E4DFE /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		C18B329F2352D9EE001E4DFE /* WordImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordImage.swift; sourceTree = "<group>"; };
 		C18B32A123530C13001E4DFE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		1C0E06F82352935800A916D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.debug.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.debug.xcconfig"; sourceTree = "<group>"; };
-		B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feel_Better.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C15896BFDF0C32AA62D5DAE5 /* Pods-Feel Better.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.release.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.release.xcconfig"; sourceTree = "<group>"; };
 		D20CB0412352746F00C8BE8D /* Feel Better.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feel Better.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20CB0442352746F00C8BE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20CB0462352746F00C8BE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +85,7 @@
 		D25E5F6E2352B0AB00C105DC /* ImageSuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSuggestionProvider.swift; sourceTree = "<group>"; };
 		D25E5F712352DB0900C105DC /* ComputerVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerVision.swift; sourceTree = "<group>"; };
 		D27ABDD62353096A00E61709 /* ImageTagMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTagMemory.swift; sourceTree = "<group>"; };
+		D288FAFF2353169200D72B86 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C18B3252235287EB001E4DFE /* Charts.framework in Frameworks */,
 				E1F8274C8DC1C8BE87A75819 /* Pods_Feel_Better.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,7 +100,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-
+		1C0E06FC23529F3000A916D7 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		5BFBAE34B11FFDF7D581CD18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E201FAA36D8BDB3792BDC58 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */,
+				C15896BFDF0C32AA62D5DAE5 /* Pods-Feel Better.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C18B323323527EE0001E4DFE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,30 +138,6 @@
 				C18B323B23527EF9001E4DFE /* SF-UI-Display-Ultralight.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		C18B3249235287BA001E4DFE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C18B324E235287BA001E4DFE /* Charts.framework */,
-				C18B3250235287BA001E4DFE /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1C0E06FC23529F3000A916D7 /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		5BFBAE34B11FFDF7D581CD18 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B85023A000B652DA2FA6FD90 /* Pods_Feel_Better.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C18B32922352D7C5001E4DFE /* Extensions */ = {
@@ -192,15 +158,6 @@
 				C18B329F2352D9EE001E4DFE /* WordImage.swift */,
 			);
 			path = "Word Cloud";
-			sourceTree = "<group>";
-		};
-		7E201FAA36D8BDB3792BDC58 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */,
-				C15896BFDF0C32AA62D5DAE5 /* Pods-Feel Better.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		D20CB0382352746F00C8BE8D = {
@@ -229,6 +186,7 @@
 				D20CB05C235275FE00C8BE8D /* Azure */,
 				D20CB0442352746F00C8BE8D /* AppDelegate.swift */,
 				D20CB0462352746F00C8BE8D /* SceneDelegate.swift */,
+				D288FAFF2353169200D72B86 /* FirstViewController.swift */,
 				D20CB04A2352746F00C8BE8D /* SecondViewController.swift */,
 				C18B324623527FE4001E4DFE /* HomePageTableViewCell.swift */,
 				C18B323123527DE6001E4DFE /* HomeViewController.swift */,
@@ -240,7 +198,6 @@
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
 				D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */,
 				D20CB0542352747000C8BE8D /* Info.plist */,
-				C18B3248235287BA001E4DFE /* Charts.xcodeproj */,
 				1C0E06F82352935800A916D7 /* GoogleService-Info.plist */,
 			);
 			path = "Feel Better";
@@ -288,7 +245,6 @@
 				D20CB03D2352746F00C8BE8D /* Sources */,
 				D20CB03E2352746F00C8BE8D /* Frameworks */,
 				D20CB03F2352746F00C8BE8D /* Resources */,
-				C18B3254235287EB001E4DFE /* Embed Frameworks */,
 				09D2A224A3C0C249848E931A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -326,35 +282,12 @@
 			mainGroup = D20CB0382352746F00C8BE8D;
 			productRefGroup = D20CB0422352746F00C8BE8D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = C18B3249235287BA001E4DFE /* Products */;
-					ProjectRef = C18B3248235287BA001E4DFE /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D20CB0402352746F00C8BE8D /* Feel Better */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		C18B324E235287BA001E4DFE /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = C18B324D235287BA001E4DFE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C18B3250235287BA001E4DFE /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = C18B324F235287BA001E4DFE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D20CB03F2352746F00C8BE8D /* Resources */ = {
@@ -436,7 +369,6 @@
 				C18B32902352D7BE001E4DFE /* UIColor+Extensions.swift in Sources */,
 				D20CB05B235275F900C8BE8D /* TextAnalyzer+Azure.swift in Sources */,
 				D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */,
-				D20CB0492352746F00C8BE8D /* FirstViewController.swift in Sources */,
 				D25E5F722352DB0900C105DC /* ComputerVision.swift in Sources */,
 				D25E5F6B23529FE300C105DC /* KeyPhraseExtractor.swift in Sources */,
 				D25E5F6723529AA100C105DC /* SentimentAnalyzer.swift in Sources */,
@@ -449,6 +381,7 @@
 				C18B328423529C31001E4DFE /* ChartView.swift in Sources */,
 				C18B329C2352D99C001E4DFE /* Canvas.swift in Sources */,
 				D27ABDD72353096A00E61709 /* ImageTagMemory.swift in Sources */,
+				D288FB002353169200D72B86 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

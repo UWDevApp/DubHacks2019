@@ -27,6 +27,7 @@
 		C18B329C2352D99C001E4DFE /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329B2352D99C001E4DFE /* Canvas.swift */; };
 		C18B329E2352D9C9001E4DFE /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329D2352D9C9001E4DFE /* Word.swift */; };
 		C18B32A02352D9EE001E4DFE /* WordImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B329F2352D9EE001E4DFE /* WordImage.swift */; };
+		C18B32A223530C13001E4DFE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18B32A123530C13001E4DFE /* SignInViewController.swift */; };
 		D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0442352746F00C8BE8D /* AppDelegate.swift */; };
 		D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB0462352746F00C8BE8D /* SceneDelegate.swift */; };
 		D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CB04A2352746F00C8BE8D /* SecondViewController.swift */; };
@@ -86,6 +87,7 @@
 		C18B329B2352D99C001E4DFE /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		C18B329D2352D9C9001E4DFE /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		C18B329F2352D9EE001E4DFE /* WordImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordImage.swift; sourceTree = "<group>"; };
+		C18B32A123530C13001E4DFE /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D20CB0412352746F00C8BE8D /* Feel Better.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feel Better.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20CB0442352746F00C8BE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20CB0462352746F00C8BE8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				C18B32992352D7F3001E4DFE /* Word Cloud */,
 				C18B32922352D7C5001E4DFE /* Extensions */,
 				D20CB04C2352746F00C8BE8D /* Main.storyboard */,
+				C18B32A123530C13001E4DFE /* SignInViewController.swift */,
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
 				D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */,
 				D20CB0542352747000C8BE8D /* Info.plist */,
@@ -307,6 +310,7 @@
 				C18B328F2352D7BE001E4DFE /* String+Extensions.swift in Sources */,
 				D20CB04B2352746F00C8BE8D /* SecondViewController.swift in Sources */,
 				C18B329E2352D9C9001E4DFE /* Word.swift in Sources */,
+				C18B32A223530C13001E4DFE /* SignInViewController.swift in Sources */,
 				C18B32A02352D9EE001E4DFE /* WordImage.swift in Sources */,
 				C18B32902352D7BE001E4DFE /* UIColor+Extensions.swift in Sources */,
 				D20CB0452352746F00C8BE8D /* AppDelegate.swift in Sources */,

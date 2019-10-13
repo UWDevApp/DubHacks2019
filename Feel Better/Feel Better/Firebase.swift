@@ -98,7 +98,7 @@ public class Firebase {
         }
     }
     
-    func uploadImage(_ data: Data, for documentID: String){
+    private func uploadImage(_ data: Data, for documentID: String){
         // Create a reference to the file you want to upload
         let picsRef = storageRef.child(documentID + ".png")
         picsRef.delete { _ in
@@ -107,7 +107,7 @@ public class Firebase {
         }
     }
     
-    func getImage(for documentID: String, then process: @escaping (Result<URL, Error>) -> Void) {
+    public func getImage(for documentID: String, then process: @escaping (Result<URL, Error>) -> Void) {
         let picsRef = storageRef.child(documentID + ".png")
         picsRef.downloadURL { (url, error) in
             if let url = url {

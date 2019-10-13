@@ -441,7 +441,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A23-vV-e81" userLabel="Base View">
                                 <rect key="frame" x="0.0" y="-27" width="414" height="950"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Tap to Select Image" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Je-rp1">
                                         <rect key="frame" x="20" y="532" width="374" height="289"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
@@ -846,6 +846,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Tap to Select Image" width="361" height="293"/>
         <image name="bestFriendIcon" width="60" height="76.5"/>
         <image name="logo" width="53.5" height="55"/>
         <image name="plus" catalog="system" width="64" height="56"/>

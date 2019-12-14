@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 //import LocalAuthentication
 
 class MemoriesTableViewController: UITableViewController {
@@ -28,6 +29,13 @@ class MemoriesTableViewController: UITableViewController {
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 		present(alertController, animated: true, completion: nil)
 	}
+	
+	//MARK: UIHostingController segue
+	@IBSegueAction func showMemoryDetails(_ coder: NSCoder) -> UIViewController? {
+	    let rootView = MemoryDetailsView()
+		return UIHostingController(coder: coder, rootView: rootView)
+	}
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -97,37 +105,37 @@ class MemoriesTableViewController: UITableViewController {
 		}
 	}
 	
-	//MARK: Navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		super.prepare(for: segue, sender: sender)
-		switch(segue.identifier ?? "") {
-		case "AddNewMemory":
-			return
-		case "ShowMemoryDetail":
-			guard let destinationViewController = segue.destination as?
-				MemoryDetailsViewController else {
-					fatalError("Unexpeceted Destination: \(segue.destination)")
-			}
-			guard let selectedeventcell = sender as? MemoryTableViewCell else {
-				fatalError("Unexpected sender: \(String(describing: sender))")
-			}
-			guard let indexPath = tableView.indexPath(for: selectedeventcell) else {fatalError("The Selected Cell is not being displayed by the table")
-			}
-			// let selectedMemory = memoriesTableViewArray[indexPath.row]
-            
-            let cell = tableView.cellForRow(at: indexPath) as! MemoryTableViewCell
-            destinationViewController.memoryFromSegue = cell.memory
-			
-			//case "EditEvent":
-			// guard let editEventsViewController = segue.destination as?
-			//      NewEventViewController else {
-			//          fatalError("Unexpeceted Destination: \(segue.destination)")
-		//  }
-		default:
-			fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
-			//fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-		}
-	}
+//	//MARK: Navigation
+//	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//		super.prepare(for: segue, sender: sender)
+//		switch(segue.identifier ?? "") {
+//		case "AddNewMemory":
+//			return
+//		case "ShowMemoryDetail":
+//			guard let destinationViewController = segue.destination as?
+//				MemoryDetailsViewController else {
+//					fatalError("Unexpeceted Destination: \(segue.destination)")
+//			}
+//			guard let selectedeventcell = sender as? MemoryTableViewCell else {
+//				fatalError("Unexpected sender: \(String(describing: sender))")
+//			}
+//			guard let indexPath = tableView.indexPath(for: selectedeventcell) else {fatalError("The Selected Cell is not being displayed by the table")
+//			}
+//			// let selectedMemory = memoriesTableViewArray[indexPath.row]
+//
+//            let cell = tableView.cellForRow(at: indexPath) as! MemoryTableViewCell
+//            destinationViewController.memoryFromSegue = cell.memory
+//
+//			//case "EditEvent":
+//			// guard let editEventsViewController = segue.destination as?
+//			//      NewEventViewController else {
+//			//          fatalError("Unexpeceted Destination: \(segue.destination)")
+//		//  }
+//		default:
+//			fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+//			//fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+//		}
+//	}
 	
 	@IBAction func unwindCancel(sender: UIStoryboardSegue) { }
 	

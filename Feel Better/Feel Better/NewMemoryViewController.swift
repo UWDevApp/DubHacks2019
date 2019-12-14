@@ -39,8 +39,8 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
         ]
         
 		// Azure sentiment API and returning sentiments and displaying accordingly
-        TextAnalzyer.analyzeSentiment(of: self.newMemoryContent.text) { (result) in
-            self.newMemorySentiment = try! result.get().score
+        //TextAnalzyer.analyzeSentiment(of: self.newMemoryContent.text) { (result) in
+            //self.newMemorySentiment = try! result.get().score
             
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5) {
@@ -61,7 +61,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
                     }
                 }
             }
-        }
+        //}
 		
 		newMemorySavePopUpView.setIsHidden(false, animated: true)
 		let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -89,7 +89,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 	var alert = UIAlertController()
 	
     var memoryToSave: LocalMemory?
-	var newMemorySentiment: Int = -5
+	var newMemorySentiment: Int = 1 // change to -5 with functional API
 	
 	// MARK: UIImagePicker
 	let UIImagePicker = UIImagePickerController()
@@ -175,9 +175,9 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate, UIImagePic
 			textView.text = "I feel......"
 		}
 		// calls auto image suggestion
-		let currentDate = Date()
-		let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)!
-		ImageSuggestionProvider.provider.relevantImage(between: yesterday, and: currentDate, for: newMemoryContent.text, then: processImageSuggestions(suggestions:))
+//		let currentDate = Date()
+//		let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)!
+//		ImageSuggestionProvider.provider.relevantImage(between: yesterday, and: currentDate, for: newMemoryContent.text, then: processImageSuggestions(suggestions:))
 	}
 	
 	//MARK: Seugue to tableview with created memory to save

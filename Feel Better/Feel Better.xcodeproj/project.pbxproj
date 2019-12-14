@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C0E06F92352935800A916D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E06F82352935800A916D7 /* GoogleService-Info.plist */; };
+		A0135A5823A5A70A00A91032 /* MemoryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0135A5723A5A70A00A91032 /* MemoryDetailsView.swift */; };
 		A0AF33A123528B560065ECD1 /* Memories Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A023528B560065ECD1 /* Memories Class.swift */; };
 		A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */; };
 		A0AF33A52352B2CA0065ECD1 /* MemoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		1C0E06F82352935800A916D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67C9E0C473F442AC19A217D5 /* Pods-Feel Better.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feel Better.debug.xcconfig"; path = "Target Support Files/Pods-Feel Better/Pods-Feel Better.debug.xcconfig"; sourceTree = "<group>"; };
+		A0135A5723A5A70A00A91032 /* MemoryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsView.swift; sourceTree = "<group>"; };
 		A0AF33A023528B560065ECD1 /* Memories Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memories Class.swift"; sourceTree = "<group>"; };
 		A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailsViewController.swift; sourceTree = "<group>"; };
@@ -201,8 +203,9 @@
 				A0AF33A2235293410065ECD1 /* MemoryTableViewCell.swift */,
 				A0AF33A42352B2CA0065ECD1 /* MemoryDetailsViewController.swift */,
 				A0AF33A62352C0110065ECD1 /* NewMemoryViewController.swift */,
-				D20CB04C2352746F00C8BE8D /* Main.storyboard */,
 				C18B32A123530C13001E4DFE /* SignInViewController.swift */,
+				D20CB04C2352746F00C8BE8D /* Main.storyboard */,
+				A0135A5723A5A70A00A91032 /* MemoryDetailsView.swift */,
 				D20CB04F2352747000C8BE8D /* Assets.xcassets */,
 				D20CB0512352747000C8BE8D /* LaunchScreen.storyboard */,
 				D20CB0542352747000C8BE8D /* Info.plist */,
@@ -405,6 +408,7 @@
 				A0AF33A3235293410065ECD1 /* MemoryTableViewCell.swift in Sources */,
 				D20CB0472352746F00C8BE8D /* SceneDelegate.swift in Sources */,
 				A0AF33A52352B2CA0065ECD1 /* MemoryDetailsViewController.swift in Sources */,
+				A0135A5823A5A70A00A91032 /* MemoryDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

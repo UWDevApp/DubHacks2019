@@ -79,7 +79,8 @@ public class Firebase {
         return documentID
     }
     
-    func getMemory(withID documentID: String, then process: @escaping (Result<CloudMemory, Error>) -> Void) {
+    func getMemory(withID documentID: String,
+                   then process: @escaping (Result<CloudMemory, Error>) -> Void) {
         // get the document from designated collection
         diariesRef.document(documentID).getDocument { [unowned self] (document, error) in
             guard let data = document?.data() else {
@@ -150,14 +151,12 @@ extension Firebase {
             guard let collection = snapshot else {
                 return process(.failure(error!))
             }
-            var dictionary = [String: Int]()
-            for document in collection.documents {
-                if let tags = document.get("tags") as? [String] {
-                    for tag in tags {
-                        dictionary[tag] = dictionary[tag, default: 0] + 1
-                    }
-                }
-            }
+            
+            let dictionary : [String: Int] = collection.documents.lazy
+                .compactMap { $0.get("tags") as? [String] }
+                .flatMap { $0 }
+                .reduce(into: [:]) { $0[$1, default: 0] += 1 }
+            
             process(.success(dictionary))
         }
     }
@@ -168,7 +167,9 @@ extension Firebase {
             guard let collection = snapshot else {
                 return process(.failure(error!))
             }
-            process(.success(collection.documents.compactMap { $0.get("sentiment") as? Int }))
+            process(.success(
+                collection.documents.compactMap { $0.get("sentiment") as? Int }
+            ))
         }
     }
     

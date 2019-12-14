@@ -19,13 +19,15 @@ import Foundation
 public enum ComputerVision {
     private static let key = "7ea07789bb9d45ed8dd6f80faf933707"
     private static let endpoint = "https://feel-better-computer-vision.cognitiveservices.azure.com/"
-        
-    public static func tag(image: Data, removeDuplicateTags: @escaping ([String]) -> Set<String>,
-                           then process: @escaping (Result<ImageTagMemory.ImageTag, Error>) -> Void) {
+    
+    public static func tag(
+        image: Data, removeDuplicateTags: @escaping ([String]) -> Set<String>,
+        then process: @escaping (Result<ImageTagMemory.ImageTag, Error>) -> Void
+    ) {
         let query = "/vision/v2.0/analyze?"
             + "visualFeatures=Brands,Categories,Description,Tags"
             + "&details=Celebrities,Landmarks"
-            // [&language]
+        // [&language]
         let url = URL(string: endpoint + query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

@@ -14,7 +14,7 @@ public class ImageTagMemory {
     private init() { }
     
     public typealias ImageTag = (tags: Set<String>, description: String?)
-
+    
     public static subscript(_ asset: PHAsset) -> ImageTag? {
         get {
             defer { shared.lock.unlock() }
